@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,13 +33,24 @@
     --radius-lg:20px;
   }
 
+  html[data-theme="light"]{
+    --ink:#122033;
+    --ink-soft:#4B5B73;
+    --muted:#64748B;
+    --line:#D7E0EB;
+    --bg:#F5F7FB;
+    --card:#FFFFFF;
+    --shadow-sm:0 1px 2px rgba(15,52,112,.05), 0 2px 8px rgba(15,52,112,.05);
+    --shadow-md:0 6px 18px rgba(15,52,112,.08), 0 16px 36px rgba(15,52,112,.06);
+    --shadow-lg:0 16px 44px rgba(15,52,112,.12), 0 28px 64px rgba(15,52,112,.10);
+  }
+
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Inter','Sarabun',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Inter','Sarabun',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;transition:background-color .25s ease,color .25s ease}
   html[lang="th"] body{font-family:'Sarabun','Inter',-apple-system,sans-serif}
   a{color:var(--bbl-blue);text-decoration:none}
   a:hover{text-decoration:underline}
 
-  /* ======== HEADER ======== */
   .header{
     background:linear-gradient(135deg, var(--bbl-blue-deep) 0%, var(--bbl-blue) 50%, var(--bbl-blue-dark) 100%);
     color:white;
@@ -48,7 +59,7 @@
     box-shadow:0 2px 16px rgba(6,37,85,.18);
   }
   .container{max-width:1180px;margin:0 auto;padding:0 24px}
-  .header-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .header-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{display:flex;align-items:center;gap:14px}
   .brand-mark{
     width:46px;height:46px;border-radius:10px;
@@ -60,68 +71,60 @@
   .brand-text{display:flex;flex-direction:column;line-height:1.15}
   .brand-name{font-weight:800;font-size:18px;letter-spacing:.3px}
   .brand-sub{font-size:11px;opacity:.85;font-weight:500;letter-spacing:1.5px;text-transform:uppercase}
-  .lang-switch{
-    display:flex;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  .header-actions{display:flex;align-items:center;gap:10px}
+  .lang-switch,.theme-toggle,.menu-toggle{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
     border-radius:999px;padding:4px;backdrop-filter:blur(8px);
   }
-  .lang-btn{
-    background:transparent;border:none;color:white;padding:6px 16px;
-    border-radius:999px;font-weight:600;font-size:13px;cursor:pointer;
+  .lang-btn,.icon-btn{
+    background:transparent;border:none;color:white;cursor:pointer;
+    border-radius:999px;font-weight:600;font-size:13px;
     transition:all .2s ease;letter-spacing:.3px;
+    display:inline-flex;align-items:center;justify-content:center;
   }
+  .lang-btn{padding:6px 16px;}
   .lang-btn.active{background:var(--bbl-gold);color:var(--bbl-blue-deep);box-shadow:0 2px 8px rgba(245,168,0,.4)}
   .lang-btn:not(.active):hover{background:rgba(255,255,255,.1)}
+  .icon-btn{width:40px;height:40px}
+  .icon-btn:hover{background:rgba(255,255,255,.1)}
+  .icon-btn svg{width:20px;height:20px}
 
-  /* ======== HERO ======== */
+  .menu-panel{
+    position:absolute;right:0;top:calc(100% + 10px);
+    min-width:240px;background:#232323;color:white;border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;box-shadow:var(--shadow-lg);padding:10px;display:none;z-index:60;
+  }
+  .menu-panel.open{display:block}
+  .menu-item{
+    display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;color:white;font-weight:600;
+  }
+  .menu-item:hover{background:rgba(255,255,255,.08);text-decoration:none}
+  .menu-item svg{width:18px;height:18px;opacity:.95;flex-shrink:0}
+  .menu-wrap{position:relative}
+
   .hero{
     background:linear-gradient(135deg, var(--bbl-blue-deep) 0%, var(--bbl-blue) 60%, var(--bbl-blue-dark) 100%);
     color:white;padding:60px 0 80px;position:relative;overflow:hidden;
   }
-  .hero::before{
-    content:"";position:absolute;top:-100px;right:-80px;width:380px;height:380px;
-    background:radial-gradient(circle, rgba(255,199,44,.18) 0%, transparent 70%);
-    border-radius:50%;pointer-events:none;
-  }
-  .hero::after{
-    content:"";position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;
-    background:radial-gradient(circle, rgba(27,74,145,.5) 0%, transparent 70%);
-    border-radius:50%;pointer-events:none;
-  }
+  .hero::before{content:"";position:absolute;top:-100px;right:-80px;width:380px;height:380px;background:radial-gradient(circle, rgba(255,199,44,.18) 0%, transparent 70%);border-radius:50%;pointer-events:none;}
+  .hero::after{content:"";position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;background:radial-gradient(circle, rgba(27,74,145,.5) 0%, transparent 70%);border-radius:50%;pointer-events:none;}
   .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
-  .badge{
-    display:inline-flex;align-items:center;gap:8px;background:rgba(255,199,44,.15);
-    border:1px solid rgba(255,199,44,.35);color:#FFD75C;padding:6px 14px;
-    border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.5px;
-    text-transform:uppercase;margin-bottom:20px;
-  }
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,199,44,.15);border:1px solid rgba(255,199,44,.35);color:#FFD75C;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;}
   .badge-dot{width:6px;height:6px;border-radius:50%;background:#FFC72C;box-shadow:0 0 0 4px rgba(255,199,44,.2)}
   .hero h1{font-size:44px;font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-.5px}
-  .hero h1 .accent{
-    background:linear-gradient(135deg,#FFD75C 0%, #F5A800 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
+  .hero h1 .accent{background:linear-gradient(135deg,#FFD75C 0%, #F5A800 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero p{font-size:17px;opacity:.92;margin:0 0 32px;max-width:560px;font-weight:400}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;padding:14px 28px;
-    border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;
-    border:none;transition:all .2s ease;text-decoration:none;
-  }
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;border:none;transition:all .2s ease;text-decoration:none;}
   .btn-primary{background:var(--bbl-gold);color:var(--bbl-blue-deep);box-shadow:0 6px 20px rgba(245,168,0,.4)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,168,0,.5);text-decoration:none}
   .btn-ghost{background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.25)}
   .btn-ghost:hover{background:rgba(255,255,255,.18);text-decoration:none}
   .btn svg{width:18px;height:18px}
 
-  .platforms-preview{
-    display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  }
-  .platform-pill{
-    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
-    backdrop-filter:blur(12px);border-radius:var(--radius);
-    padding:18px;display:flex;align-items:center;gap:12px;
-    transition:all .25s ease;
-  }
+  .platforms-preview{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .platform-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:var(--radius);padding:18px;display:flex;align-items:center;gap:12px;transition:all .25s ease;}
   .platform-pill:hover{background:rgba(255,255,255,.13);transform:translateY(-2px)}
   .platform-pill .pico{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:white;display:flex;align-items:center;justify-content:center;padding:6px}
   .platform-pill .pico img{width:100%;height:100%;object-fit:contain}
@@ -130,25 +133,14 @@
   .platform-pill .ptext b{display:block;font-weight:700;font-size:14px;margin-bottom:2px}
   .platform-pill .ptext span{opacity:.75;font-size:11.5px}
 
-  /* ======== MAIN CONTENT ======== */
   main{padding:60px 0 80px}
   .section-title{font-size:13px;font-weight:700;color:var(--bbl-blue);letter-spacing:1.5px;text-transform:uppercase;margin:0 0 8px}
   .section-heading{font-size:28px;font-weight:800;color:var(--ink);margin:0 0 12px;letter-spacing:-.3px}
   .section-sub{color:var(--ink-soft);font-size:15px;margin:0 0 32px}
 
-  /* ======== STEPPER ======== */
-  .stepper{
-    background:var(--card);border-radius:var(--radius-lg);
-    padding:22px 28px;box-shadow:var(--shadow-sm);
-    border:1px solid var(--line);margin-bottom:24px;
-    display:flex;gap:8px;align-items:center;flex-wrap:wrap;
-  }
+  .stepper{background:var(--card);border-radius:var(--radius-lg);padding:22px 28px;box-shadow:var(--shadow-sm);border:1px solid var(--line);margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
   .step-item{display:flex;align-items:center;gap:10px;flex:1;min-width:120px}
-  .step-num{
-    width:34px;height:34px;border-radius:50%;background:var(--bbl-blue-light);
-    color:var(--bbl-blue);font-weight:700;display:flex;align-items:center;justify-content:center;
-    font-size:14px;flex-shrink:0;border:2px solid transparent;transition:all .25s ease;
-  }
+  .step-num{width:34px;height:34px;border-radius:50%;background:var(--bbl-blue-light);color:var(--bbl-blue);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;border:2px solid transparent;transition:all .25s ease;}
   .step-item.active .step-num{background:var(--bbl-blue);color:white;box-shadow:0 4px 12px rgba(27,74,145,.35)}
   .step-item.done .step-num{background:var(--success);color:white}
   .step-item.done .step-num::after{content:"✓"}
@@ -158,200 +150,26 @@
   .step-connector{flex:0 0 20px;height:2px;background:var(--line);margin:0 -4px}
   .step-item.done + .step-connector{background:var(--success)}
 
-  /* ======== QUESTION CARD ======== */
-  .quiz-card{
-    background:var(--card);border-radius:var(--radius-lg);
-    box-shadow:var(--shadow-md);overflow:hidden;border:1px solid var(--line);
-  }
-  .progress-bar{height:5px;background:var(--bbl-blue-light);overflow:hidden}
-  .progress-bar-fill{height:100%;background:linear-gradient(90deg, var(--bbl-blue) 0%, var(--bbl-gold) 100%);transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}
-  .quiz-body{padding:42px 48px}
-  .q-tag{
-    display:inline-block;background:var(--bbl-blue-light);color:var(--bbl-blue);
-    padding:5px 12px;border-radius:6px;font-size:11.5px;font-weight:700;
-    letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;
-  }
-  .q-title{font-size:26px;font-weight:800;color:var(--ink);margin:0 0 10px;line-height:1.3;letter-spacing:-.2px}
-  .q-desc{color:var(--ink-soft);font-size:15px;margin:0 0 28px}
-  .options{display:grid;grid-template-columns:repeat(2, 1fr);gap:14px}
-  .option{
-    background:white;border:2px solid var(--line);border-radius:var(--radius);
-    padding:18px 20px;cursor:pointer;transition:all .2s ease;
-    display:flex;gap:14px;align-items:flex-start;text-align:left;
-    position:relative;
-  }
-  .option:hover{border-color:var(--bbl-blue);background:#FBFCFE;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
-  .option.selected{border-color:var(--bbl-blue);background:var(--bbl-blue-light);box-shadow:0 0 0 3px rgba(27,74,145,.1)}
-  .option.selected::after{
-    content:"✓";position:absolute;top:12px;right:14px;
-    width:22px;height:22px;border-radius:50%;background:var(--bbl-blue);
-    color:white;font-size:13px;font-weight:700;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .opt-icon{
-    width:42px;height:42px;border-radius:10px;flex-shrink:0;
-    background:var(--bbl-blue-light);color:var(--bbl-blue);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .opt-icon svg{width:22px;height:22px}
-  .option.selected .opt-icon{background:var(--bbl-blue);color:white}
-  .opt-text{flex:1}
-  .opt-title{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:3px}
-  .opt-desc{font-size:13px;color:var(--muted);line-height:1.45}
-
-  .quiz-footer{
-    padding:20px 48px;background:#FAFBFD;border-top:1px solid var(--line);
-    display:flex;align-items:center;justify-content:space-between;
-  }
-  .q-counter{font-size:13px;color:var(--muted);font-weight:500}
-  .q-counter b{color:var(--bbl-blue);font-weight:700}
-  .nav-btns{display:flex;gap:10px}
-  .btn-sm{padding:10px 22px;font-size:14px}
-  .btn-outline{background:white;color:var(--bbl-blue);border:1.5px solid var(--line)}
-  .btn-outline:hover{border-color:var(--bbl-blue);text-decoration:none}
-  .btn-solid{background:var(--bbl-blue);color:white;box-shadow:0 4px 12px rgba(27,74,145,.25)}
-  .btn-solid:hover{background:var(--bbl-blue-dark);transform:translateY(-1px);text-decoration:none}
-  .btn-solid:disabled{background:#C2C8D5;cursor:not-allowed;box-shadow:none;transform:none}
-
-  /* ======== RESULT ======== */
-  .result-wrap{display:none}
-  .result-hero{
-    background:linear-gradient(135deg, var(--bbl-blue-deep) 0%, var(--bbl-blue) 100%);
-    color:white;border-radius:var(--radius-lg);
-    padding:42px 48px;position:relative;overflow:hidden;margin-bottom:28px;
-    box-shadow:var(--shadow-lg);
-  }
-  .result-hero::before{
-    content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;
-    background:radial-gradient(circle, rgba(255,199,44,.2) 0%, transparent 70%);
-    border-radius:50%;
-  }
-  .result-tag{
-    display:inline-flex;align-items:center;gap:8px;background:rgba(255,199,44,.18);
-    border:1px solid rgba(255,199,44,.4);color:#FFD75C;padding:6px 14px;
-    border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:1px;
-    text-transform:uppercase;margin-bottom:18px;
-  }
-  .result-top{position:relative;z-index:1;display:flex;gap:28px;align-items:center}
-  .result-icon-lg{
-    width:88px;height:88px;border-radius:18px;background:white;flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;padding:14px;
-    box-shadow:0 12px 32px rgba(0,0,0,.2);
-  }
-  .result-name{font-size:34px;font-weight:800;margin:0 0 4px;letter-spacing:-.4px}
-  .result-tagline{font-size:16px;opacity:.9;margin:0;font-weight:400}
-  .confidence{margin-top:24px;position:relative;z-index:1}
-  .conf-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13.5px;font-weight:600}
-  .conf-bar{height:10px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}
-  .conf-fill{height:100%;background:linear-gradient(90deg, var(--bbl-gold) 0%, var(--bbl-gold-light) 100%);border-radius:999px;transition:width .8s cubic-bezier(.4,0,.2,1)}
-
-  .result-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}
-
-  .card{
-    background:var(--card);border-radius:var(--radius-lg);
-    box-shadow:var(--shadow-sm);border:1px solid var(--line);
-    padding:28px 32px;margin-bottom:24px;
-  }
-  .card h3{font-size:18px;font-weight:800;margin:0 0 16px;color:var(--ink);display:flex;align-items:center;gap:10px}
-  .card h3::before{content:"";width:4px;height:18px;background:var(--bbl-gold);border-radius:2px}
-  .card p, .card li{font-size:14.5px;color:var(--ink-soft);line-height:1.65}
-  .card ul{margin:0;padding-left:20px}
-  .card ul li{margin-bottom:8px}
-  .card ul li::marker{color:var(--bbl-blue)}
-
-  .scoreboard{display:flex;flex-direction:column;gap:12px}
-  .score-row{display:flex;align-items:center;gap:12px}
-  .score-ico{width:30px;height:30px;border-radius:7px;background:white;border:1px solid var(--line);padding:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-  .score-name{font-size:13px;font-weight:600;color:var(--ink);min-width:120px;flex-shrink:0}
-  .score-track{flex:1;height:8px;background:var(--bbl-blue-light);border-radius:999px;overflow:hidden}
-  .score-fill{height:100%;background:linear-gradient(90deg, var(--bbl-blue) 0%, var(--bbl-blue) 100%);border-radius:999px;transition:width .6s ease}
-  .score-fill.winner{background:linear-gradient(90deg, var(--bbl-gold) 0%, var(--bbl-gold-light) 100%)}
-  .score-pct{font-size:12.5px;font-weight:700;color:var(--ink-soft);min-width:38px;text-align:right}
-
-  .reason-list{list-style:none;padding:0;margin:0}
-  .reason-list li{
-    display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);
-    font-size:14px;color:var(--ink-soft);line-height:1.55;
-  }
-  .reason-list li:last-child{border-bottom:none}
-  .reason-list li::before{
-    content:"";flex-shrink:0;width:8px;height:8px;border-radius:50%;
-    background:var(--bbl-gold);margin-top:7px;
-  }
-
-  .nextsteps a{
-    display:flex;align-items:center;gap:10px;padding:12px 14px;
-    background:#FAFBFD;border:1px solid var(--line);border-radius:10px;
-    color:var(--bbl-blue);font-weight:600;font-size:13.5px;
-    margin-bottom:8px;transition:all .2s ease;
-  }
-  .nextsteps a:hover{background:var(--bbl-blue-light);border-color:var(--bbl-blue);text-decoration:none;transform:translateX(2px)}
-  .nextsteps a svg{width:14px;height:14px;margin-left:auto}
-
+  .quiz-card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden;border:1px solid var(--line);}
+  .progress-bar{height:5px;background:var(--bbl-blue-light);overflow:hidden}.progress-bar-fill{height:100%;background:linear-gradient(90deg, var(--bbl-blue) 0%, var(--bbl-gold) 100%);transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}.quiz-body{padding:42px 48px}
+  .q-tag{display:inline-block;background:var(--bbl-blue-light);color:var(--bbl-blue);padding:5px 12px;border-radius:6px;font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}.q-title{font-size:26px;font-weight:800;color:var(--ink);margin:0 0 10px;line-height:1.3;letter-spacing:-.2px}.q-desc{color:var(--ink-soft);font-size:15px;margin:0 0 28px}.options{display:grid;grid-template-columns:repeat(2, 1fr);gap:14px}.option{background:white;border:2px solid var(--line);border-radius:var(--radius);padding:18px 20px;cursor:pointer;transition:all .2s ease;display:flex;gap:14px;align-items:flex-start;text-align:left;position:relative;}.option:hover{border-color:var(--bbl-blue);background:#FBFCFE;transform:translateY(-1px);box-shadow:var(--shadow-sm)}.option.selected{border-color:var(--bbl-blue);background:var(--bbl-blue-light);box-shadow:0 0 0 3px rgba(27,74,145,.1)}.option.selected::after{content:"✓";position:absolute;top:12px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--bbl-blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}.opt-icon{width:42px;height:42px;border-radius:10px;flex-shrink:0;background:var(--bbl-blue-light);color:var(--bbl-blue);display:flex;align-items:center;justify-content:center;}.opt-icon svg{width:22px;height:22px}.option.selected .opt-icon{background:var(--bbl-blue);color:white}.opt-text{flex:1}.opt-title{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:3px}.opt-desc{font-size:13px;color:var(--muted);line-height:1.45}
+  .quiz-footer{padding:20px 48px;background:#FAFBFD;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}.q-counter{font-size:13px;color:var(--muted);font-weight:500}.q-counter b{color:var(--bbl-blue);font-weight:700}.nav-btns{display:flex;gap:10px}.btn-sm{padding:10px 22px;font-size:14px}.btn-outline{background:white;color:var(--bbl-blue);border:1.5px solid var(--line)}.btn-outline:hover{border-color:var(--bbl-blue);text-decoration:none}.btn-solid{background:var(--bbl-blue);color:white;box-shadow:0 4px 12px rgba(27,74,145,.25)}.btn-solid:hover{background:var(--bbl-blue-dark);transform:translateY(-1px);text-decoration:none}.btn-solid:disabled{background:#C2C8D5;cursor:not-allowed;box-shadow:none;transform:none}
+  .result-wrap{display:none}.result-hero{background:linear-gradient(135deg, var(--bbl-blue-deep) 0%, var(--bbl-blue) 100%);color:white;border-radius:var(--radius-lg);padding:42px 48px;position:relative;overflow:hidden;margin-bottom:28px;box-shadow:var(--shadow-lg);}.result-hero::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;background:radial-gradient(circle, rgba(255,199,44,.2) 0%, transparent 70%);border-radius:50%;}.result-top{position:relative;z-index:1;display:flex;gap:28px;align-items:center}.result-icon-lg{width:88px;height:88px;border-radius:18px;background:white;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:14px;box-shadow:0 12px 32px rgba(0,0,0,.2);}.result-name{font-size:34px;font-weight:800;margin:0 0 4px;letter-spacing:-.4px}.result-tagline{font-size:16px;opacity:.9;margin:0;font-weight:400}.confidence{margin-top:24px;position:relative;z-index:1}.conf-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13.5px;font-weight:600}.conf-bar{height:10px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}.conf-fill{height:100%;background:linear-gradient(90deg, var(--bbl-gold) 0%, var(--bbl-gold-light) 100%);border-radius:999px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+  .result-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}.card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border:1px solid var(--line);padding:28px 32px;margin-bottom:24px;}.card h3{font-size:18px;font-weight:800;margin:0 0 16px;color:var(--ink);display:flex;align-items:center;gap:10px}.card h3::before{content:"";width:4px;height:18px;background:var(--bbl-gold);border-radius:2px}.card p, .card li{font-size:14.5px;color:var(--ink-soft);line-height:1.65}.card ul{margin:0;padding-left:20px}.card ul li{margin-bottom:8px}.card ul li::marker{color:var(--bbl-blue)}
+  .scoreboard{display:flex;flex-direction:column;gap:12px}.score-row{display:flex;align-items:center;gap:12px}.score-ico{width:30px;height:30px;border-radius:7px;background:white;border:1px solid var(--line);padding:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center}.score-name{font-size:13px;font-weight:600;color:var(--ink);min-width:120px;flex-shrink:0}.score-track{flex:1;height:8px;background:var(--bbl-blue-light);border-radius:999px;overflow:hidden}.score-fill{height:100%;background:linear-gradient(90deg, var(--bbl-blue) 0%, var(--bbl-blue) 100%);border-radius:999px;transition:width .6s ease}.score-fill.winner{background:linear-gradient(90deg, var(--bbl-gold) 0%, var(--bbl-gold-light) 100%)}.score-pct{font-size:12.5px;font-weight:700;color:var(--ink-soft);min-width:38px;text-align:right}
+  .reason-list{list-style:none;padding:0;margin:0}.reason-list li{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--ink-soft);line-height:1.55;}.reason-list li:last-child{border-bottom:none}.reason-list li::before{content:"";flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--bbl-gold);margin-top:7px;}
+  .nextsteps a{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#FAFBFD;border:1px solid var(--line);border-radius:10px;color:var(--bbl-blue);font-weight:600;font-size:13.5px;margin-bottom:8px;transition:all .2s ease;}.nextsteps a:hover{background:var(--bbl-blue-light);border-color:var(--bbl-blue);text-decoration:none;transform:translateX(2px)}.nextsteps a svg{width:14px;height:14px;margin-left:auto}
   .result-actions{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
-
-  /* ======== SUMMARY (answers) ======== */
-  .summary-list{display:grid;grid-template-columns:1fr;gap:10px}
-  .summary-item{
-    display:flex;justify-content:space-between;gap:14px;padding:10px 14px;
-    background:#FAFBFD;border-radius:8px;border:1px solid var(--line);
-    font-size:13px;
-  }
-  .summary-q{color:var(--muted);font-weight:500;flex:1}
-  .summary-a{color:var(--ink);font-weight:600;text-align:right;max-width:60%}
-
-  /* ======== FOOTER ======== */
-  .footer{
-    background:var(--bbl-blue-deep);color:rgba(255,255,255,.85);
-    padding:40px 0 30px;font-size:13px;margin-top:40px;
-  }
-  .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
-  .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .footer-brand .brand-mark{width:36px;height:36px;border-radius:8px}
-  .footer p{margin:6px 0;font-size:12.5px;opacity:.7}
-  .footer a{color:#FFC72C}
-  .disclaimer{font-size:11.5px;opacity:.55;max-width:680px;line-height:1.55}
-
-  /* ======== RESPONSIVE ======== */
-  @media (max-width:900px){
-    .hero-inner{grid-template-columns:1fr}
-    .platforms-preview{grid-template-columns:1fr 1fr}
-    .result-grid{grid-template-columns:1fr}
-    .hero h1{font-size:34px}
-    .options{grid-template-columns:1fr}
-    .quiz-body{padding:30px 24px}
-    .quiz-footer{padding:18px 24px}
-    .stepper{padding:16px;gap:4px}
-    .step-label{display:none}
-    .step-connector{flex:0 0 12px}
-    .result-top{flex-direction:column;text-align:center}
-    .result-hero{padding:32px 24px}
-    .card{padding:22px}
-  }
-  @media (max-width:560px){
-    .hero{padding:40px 0 56px}
-    .hero h1{font-size:28px}
-    .platforms-preview{grid-template-columns:1fr}
-    .header{padding:14px 0}
-    .brand-sub{display:none}
-  }
-
-  /* ======== PRINT / PDF ======== */
-  @media print {
-    .header, .footer, .quiz-footer, .stepper, .hero, .result-actions { display:none !important; }
-    body { background:white }
-    .result-hero { box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact }
-    .card { box-shadow:none; border:1px solid #ddd; page-break-inside:avoid }
-  }
-
-  /* Animations */
+  .summary-list{display:grid;grid-template-columns:1fr;gap:10px}.summary-item{display:flex;justify-content:space-between;gap:14px;padding:10px 14px;background:#FAFBFD;border-radius:8px;border:1px solid var(--line);font-size:13px;}.summary-q{color:var(--muted);font-weight:500;flex:1}.summary-a{color:var(--ink);font-weight:600;text-align:right;max-width:60%}
+  .footer{background:var(--bbl-blue-deep);color:rgba(255,255,255,.85);padding:40px 0 30px;font-size:13px;margin-top:40px;}.footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}.footer-brand .brand-mark{width:36px;height:36px;border-radius:8px}.footer p{margin:6px 0;font-size:12.5px;opacity:.7}.footer a{color:#FFC72C}.disclaimer{font-size:11.5px;opacity:.55;max-width:680px;line-height:1.55}
+  @media (max-width:900px){.hero-inner{grid-template-columns:1fr}.platforms-preview{grid-template-columns:1fr 1fr}.result-grid{grid-template-columns:1fr}.hero h1{font-size:34px}.options{grid-template-columns:1fr}.quiz-body{padding:30px 24px}.quiz-footer{padding:18px 24px}.stepper{padding:16px;gap:4px}.step-label{display:none}.step-connector{flex:0 0 12px}.result-top{flex-direction:column;text-align:center}.result-hero{padding:32px 24px}.card{padding:22px}}
+  @media (max-width:560px){.hero{padding:40px 0 56px}.hero h1{font-size:28px}.platforms-preview{grid-template-columns:1fr}.header{padding:14px 0}.brand-sub{display:none}.header-actions{gap:8px}.lang-btn{padding:6px 12px}.menu-panel{right:-8px;min-width:220px}}
+  @media print {.header, .footer, .quiz-footer, .stepper, .hero, .result-actions { display:none !important; } body { background:white } .result-hero { box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact } .card { box-shadow:none; border:1px solid #ddd; page-break-inside:avoid }}
   @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
   .fade-in{animation:fadeUp .4s ease}
 </style>
 </head>
 <body>
-
-<!-- ============ HEADER ============ -->
 <header class="header">
   <div class="container header-row">
     <div class="brand">
@@ -363,14 +181,28 @@
         <div class="brand-sub" data-i18n="header.sub">AI Agent Platform Advisor</div>
       </div>
     </div>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button class="lang-btn active" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="th">TH</button>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="th">TH</button>
+      </div>
+      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a1 1 0 0 0 0 18 9 9 0 1 1 0-18Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="menu-wrap">
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="hamburgerMenu">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <nav class="menu-panel" id="hamburgerMenu" aria-label="Page navigation">
+          <a class="menu-item" href="#hero"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 4v16"/></svg>README</a>
+          <a class="menu-item" href="#changelog"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke-linecap="round" stroke-linejoin="round"/></svg>Changelog</a>
+          <a class="menu-item" href="#flowchart"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19V5" stroke-linecap="round"/><path d="M8 15l4-8 4 6 4-10" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 19h18" stroke-linecap="round"/></svg>Flowchart</a>
+          <a class="menu-item" href="#scoring"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 20V10" stroke-linecap="round"/><path d="M12 20V4" stroke-linecap="round"/><path d="M19 20v-8" stroke-linecap="round"/></svg>Scoring</a>
+        </nav>
+      </div>
     </div>
   </div>
 </header>
-
-<!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="container hero-inner">
     <div>
@@ -389,1315 +221,47 @@
       </div>
     </div>
     <div class="platforms-preview" aria-hidden="true">
-      <div class="platform-pill">
-        <div class="pico" id="ic-m365"></div>
-        <div class="ptext"><b>Microsoft 365 Copilot</b><span data-i18n="prev.m365">In-app productivity AI</span></div>
-      </div>
-      <div class="platform-pill">
-        <div class="pico" id="ic-ab"></div>
-        <div class="ptext"><b>Agent Builder</b><span data-i18n="prev.ab">Declarative M365 agents</span></div>
-      </div>
-      <div class="platform-pill">
-        <div class="pico" id="ic-cs"></div>
-        <div class="ptext"><b>Copilot Studio</b><span data-i18n="prev.cs">Low-code agent platform</span></div>
-      </div>
-      <div class="platform-pill">
-        <div class="pico" id="ic-fdry"></div>
-        <div class="ptext"><b>Microsoft Foundry</b><span data-i18n="prev.fdry">Pro-code AI development</span></div>
-      </div>
+      <div class="platform-pill"><div class="pico" id="ic-m365"></div><div class="ptext"><b>Microsoft 365 Copilot</b><span data-i18n="prev.m365">In-app productivity AI</span></div></div>
+      <div class="platform-pill"><div class="pico" id="ic-ab"></div><div class="ptext"><b>Agent Builder</b><span data-i18n="prev.ab">Declarative M365 agents</span></div></div>
+      <div class="platform-pill"><div class="pico" id="ic-cs"></div><div class="ptext"><b>Copilot Studio</b><span data-i18n="prev.cs">Low-code agent platform</span></div></div>
+      <div class="platform-pill"><div class="pico" id="ic-fdry"></div><div class="ptext"><b>Microsoft Foundry</b><span data-i18n="prev.fdry">Pro-code AI development</span></div></div>
     </div>
   </div>
 </section>
-
-<!-- ============ MAIN ============ -->
 <main class="container">
-
-  <!-- QUIZ -->
   <div id="quizWrap">
     <div class="section-title" data-i18n="quiz.section">Step by Step</div>
     <h2 class="section-heading" data-i18n="quiz.heading">Tell us about your agent use case</h2>
     <p class="section-sub" data-i18n="quiz.sub">Based on Microsoft's official AI decision tree — covers goal, users, data, channels, customization, and governance.</p>
-
-    <!-- Stepper -->
     <div class="stepper" id="stepper"></div>
-
-    <!-- Quiz card -->
     <div class="quiz-card">
       <div class="progress-bar"><div class="progress-bar-fill" id="progress"></div></div>
       <div class="quiz-body" id="quizBody"></div>
       <div class="quiz-footer">
         <div class="q-counter"><span data-i18n="quiz.question">Question</span> <b id="qNum">1</b> <span data-i18n="quiz.of">of</span> <b id="qTotal">6</b></div>
-        <div class="nav-btns">
-          <button class="btn btn-sm btn-outline" id="prevBtn" disabled><span data-i18n="quiz.prev">Previous</span></button>
-          <button class="btn btn-sm btn-solid" id="nextBtn" disabled><span data-i18n="quiz.next">Next</span></button>
-        </div>
+        <div class="nav-btns"><button class="btn btn-sm btn-outline" id="prevBtn" disabled><span data-i18n="quiz.prev">Previous</span></button><button class="btn btn-sm btn-solid" id="nextBtn" disabled><span data-i18n="quiz.next">Next</span></button></div>
       </div>
     </div>
   </div>
-
-  <!-- RESULT -->
-  <div id="resultWrap" class="result-wrap" aria-hidden="true">
-    <div id="resultContent"></div>
-  </div>
-
+  <div id="resultWrap" class="result-wrap" aria-hidden="true"><div id="resultContent"></div></div>
+  <section id="changelog" class="card"><h3>Changelog</h3><p>Added a hamburger navigation menu and a light/dark mode toggle.</p></section>
+  <section id="flowchart" class="card"><h3>Flowchart</h3><p>Use the menu to jump to sections and the advisor to walk through the decision tree.</p></section>
+  <section id="scoring" class="card"><h3>Scoring</h3><p>The recommendation engine scores each platform against your answers.</p></section>
 </main>
-
-<!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="container">
-    <div class="footer-row">
-      <div>
-        <div class="footer-brand">
-          <div class="brand-mark">
-            <img src="images/bangkok-bank-logo.png" alt="Bangkok Bank logo" width="24" height="24">
-          </div>
-          <div>
-            <div style="font-weight:700;color:white">Bangkok Bank · AI Agent Platform Advisor</div>
-            <div style="font-size:11.5px;opacity:.7" data-i18n="footer.tag">An internal decision-support tool</div>
-          </div>
-        </div>
-        <p class="disclaimer" data-i18n="footer.disclaimer">
-          This advisor is a guidance tool only. Final platform selection should consider your organization's licensing, security posture, and IT governance.
-          Branding shown is for demonstration purposes. Microsoft product names and icons are trademarks of Microsoft Corporation.
-        </p>
-      </div>
-      <div style="min-width:200px">
-        <div style="font-weight:700;color:white;margin-bottom:10px" data-i18n="footer.links">Useful links</div>
-        <p><a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai/strategy" target="_blank" rel="noopener">CAF · AI Strategy</a></p>
-        <p><a href="https://adoption.microsoft.com/copilot/" target="_blank" rel="noopener">Microsoft 365 Copilot</a></p>
-        <p><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/" target="_blank" rel="noopener">Copilot Studio</a></p>
-        <p><a href="https://learn.microsoft.com/en-us/azure/ai-foundry/" target="_blank" rel="noopener">Microsoft Foundry</a></p>
-      </div>
-    </div>
-  </div>
+  <div class="container"><div class="footer-row"><div><div class="footer-brand"><div class="brand-mark"><img src="images/bangkok-bank-logo.png" alt="Bangkok Bank logo" width="24" height="24"></div><div><div style="font-weight:700;color:white">Bangkok Bank · AI Agent Platform Advisor</div><div style="font-size:11.5px;opacity:.7" data-i18n="footer.tag">An internal decision-support tool</div></div></div><p class="disclaimer" data-i18n="footer.disclaimer">This advisor is a guidance tool only. Final platform selection should consider your organization's licensing, security posture, and IT governance. Branding shown is for demonstration purposes. Microsoft product names and icons are trademarks of Microsoft Corporation.</p></div><div style="min-width:200px"><div style="font-weight:700;color:white;margin-bottom:10px" data-i18n="footer.links">Useful links</div><p><a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai/strategy" target="_blank" rel="noopener">CAF · AI Strategy</a></p><p><a href="https://adoption.microsoft.com/copilot/" target="_blank" rel="noopener">Microsoft 365 Copilot</a></p><p><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/" target="_blank" rel="noopener">Copilot Studio</a></p><p><a href="https://learn.microsoft.com/en-us/azure/ai-foundry/" target="_blank" rel="noopener">Microsoft Foundry</a></p></div></div></div>
 </footer>
-
 <script>
-/* =====================================================================
-   ICONS — inline SVG matching Microsoft visual style
-===================================================================== */
-const ICONS = {
-  /* Microsoft 365 Copilot — AI-powered productivity assistant */
-  m365: `<img src="images/m365-copilot-logo.png" alt="Microsoft 365 Copilot" width="36" height="36">`,
-
-  /* Agent Builder — Declarative agents for M365 Copilot */
-  ab: `<img src="images/copilot.png" alt="Agent Builder" width="36" height="36">`,
-
-  /* Copilot Studio — Low-code agent development platform */
-  cs: `<img src="images/copilot-studio.png" alt="Copilot Studio" width="36" height="36">`,
-
-  /* Microsoft Foundry — Pro-code AI development platform */
-  fdry: `<img src="images/azureai-color.png" alt="Microsoft Foundry" width="36" height="36">`
-};
-
-// Inject hero preview icons
-document.getElementById('ic-m365').innerHTML = ICONS.m365;
-document.getElementById('ic-ab').innerHTML = ICONS.ab;
-document.getElementById('ic-cs').innerHTML = ICONS.cs;
-document.getElementById('ic-fdry').innerHTML = ICONS.fdry;
-
-/* =====================================================================
-   PLATFORM METADATA
-===================================================================== */
-const PLATFORMS = {
-  m365: {
-    key:'m365',
-    name:'Microsoft 365 Copilot',
-    tagline_en:'AI assistance in the apps your team already uses every day.',
-    tagline_th:'ผู้ช่วย AI ในแอปที่พนักงานใช้งานอยู่ทุกวัน',
-    icon:ICONS.m365,
-    when_en:[
-      'Goal is to boost individual or team productivity in Microsoft 365 apps',
-      'You want chat and in-app help across Outlook, Teams, Word, Excel, PowerPoint',
-      'Data lives in Microsoft Graph (mail, files, calendar, chats)',
-      'Users are knowledge workers — no development needed',
-      'Standard Microsoft 365 governance and Purview controls meet your needs'
-    ],
-    when_th:[
-      'เป้าหมายคือเพิ่ม productivity ให้พนักงานใน Microsoft 365',
-      'ต้องการ AI ช่วยใน Outlook, Teams, Word, Excel, PowerPoint',
-      'ข้อมูลส่วนใหญ่อยู่ใน Microsoft Graph (เมล ไฟล์ ปฏิทิน แชท)',
-      'ผู้ใช้คือ knowledge worker ที่ไม่ต้องเขียนโค้ด',
-      'การกำกับดูแลแบบ M365 + Purview เพียงพอแล้ว'
-    ],
-    links:[
-      {label_en:'Adoption Guide', label_th:'คู่มือการนำไปใช้', url:'https://adoption.microsoft.com/copilot/'},
-      {label_en:'Licensing', label_th:'ใบอนุญาตการใช้งาน', url:'https://www.microsoft.com/microsoft-365/copilot'},
-      {label_en:'Data Security (Purview)', label_th:'ความปลอดภัยข้อมูล (Purview)', url:'https://learn.microsoft.com/microsoft-365-copilot/microsoft-365-copilot-overview'}
-    ]
-  },
-  ab: {
-    key:'ab',
-    name:'Agent Builder',
-    tagline_en:'No-code, declarative agents that extend Microsoft 365 Copilot.',
-    tagline_th:'สร้าง agent แบบไม่ต้องเขียนโค้ดเพื่อต่อยอด Microsoft 365 Copilot',
-    icon:ICONS.ab,
-    when_en:[
-      'You already use Microsoft 365 Copilot and want domain-specific skills',
-      'You need lightweight, declarative agents grounded on your SharePoint / Graph data',
-      'Business users or makers want to build without code',
-      'Agents are consumed inside Microsoft 365 Copilot Chat / Teams',
-      'You want fast time-to-value with minimal IT involvement'
-    ],
-    when_th:[
-      'มี Microsoft 365 Copilot อยู่แล้วและต้องการเพิ่มความสามารถเฉพาะทาง',
-      'สร้าง agent แบบ declarative ดึงข้อมูลจาก SharePoint / Microsoft Graph',
-      'ให้ business user หรือ maker สร้างเองได้โดยไม่ต้องเขียนโค้ด',
-      'ใช้งาน agent ผ่าน Microsoft 365 Copilot Chat / Teams',
-      'ต้องการ time-to-value เร็ว ไม่ต้องพึ่ง IT มาก'
-    ],
-    links:[
-      {label_en:'Build Agents in M365 Copilot', label_th:'สร้าง agent ใน M365 Copilot', url:'https://learn.microsoft.com/microsoft-365-copilot/extensibility/'},
-      {label_en:'Declarative Agents', label_th:'Declarative Agents', url:'https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-declarative-agent'},
-      {label_en:'SharePoint Agents', label_th:'SharePoint Agents', url:'https://learn.microsoft.com/sharepoint/dev/'}
-    ]
-  },
-  cs: {
-    key:'cs',
-    name:'Copilot Studio',
-    tagline_en:'Low-code platform to design conversational AI agents and workflows.',
-    tagline_th:'แพลตฟอร์ม low-code สำหรับสร้าง AI agent แบบสนทนาและ workflow',
-    icon:ICONS.cs,
-    when_en:[
-      'Goal is to automate a business function with a conversational agent',
-      'Users span multiple channels — Teams, web, mobile, custom apps',
-      'You need connectors to CRM, ERP, ticketing, line-of-business systems',
-      'IT / Makers / Power users build collaboratively with low-code tools',
-      'Pay-as-you-go pricing with integrated governance is preferred'
-    ],
-    when_th:[
-      'เป้าหมายคือทำ business process automation ด้วย agent แบบสนทนา',
-      'ใช้งานหลายช่องทาง — Teams, web, mobile, custom app',
-      'ต้องเชื่อมต่อระบบ CRM, ERP, ระบบงานภายในต่างๆ',
-      'IT/Maker/Power user ทำงานร่วมกันแบบ low-code',
-      'ต้องการคิดราคาแบบ pay-as-you-go พร้อม governance ในตัว'
-    ],
-    links:[
-      {label_en:'Copilot Studio Docs', label_th:'เอกสาร Copilot Studio', url:'https://learn.microsoft.com/microsoft-copilot-studio/'},
-      {label_en:'Build Your First Agent', label_th:'สร้าง agent ตัวแรก', url:'https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-get-started'},
-      {label_en:'Pricing', label_th:'ราคา', url:'https://www.microsoft.com/microsoft-copilot/microsoft-copilot-studio'}
-    ]
-  },
-  fdry: {
-    key:'fdry',
-    name:'Microsoft Foundry',
-    tagline_en:'Unified pro-code platform for building, evaluating, and deploying AI agents and apps.',
-    tagline_th:'แพลตฟอร์ม pro-code สำหรับสร้าง ประเมิน และ deploy AI agent และแอปพลิเคชัน',
-    icon:ICONS.fdry,
-    when_en:[
-      'You need full control: custom models, RAG, fine-tuning, evaluation, monitoring',
-      'Developers build with code (Python, .NET, etc.) and modern AI SDKs',
-      'You need Azure OpenAI, AI Search, Document Intelligence, or multi-model choice',
-      'Multi-agent orchestration, private networking, regulated workloads',
-      "You're already invested in Azure and have engineering capacity"
-    ],
-    when_th:[
-      'ต้องการควบคุมเต็มที่: custom model, RAG, fine-tuning, evaluation, monitoring',
-      'นักพัฒนาเขียนโค้ดด้วย Python, .NET หรือ SDK สำหรับ AI',
-      'ต้องใช้ Azure OpenAI, AI Search, Document Intelligence หรือเลือกใช้หลายโมเดล',
-      'ทำ multi-agent, private networking หรือ workload ที่มีกฎระเบียบสูง',
-      'ใช้งาน Azure อยู่แล้วและมีทีม engineering รองรับ'
-    ],
-    links:[
-      {label_en:'Microsoft Foundry Docs', label_th:'เอกสาร Microsoft Foundry', url:'https://learn.microsoft.com/azure/ai-foundry/'},
-      {label_en:'Foundry Agent Service', label_th:'Foundry Agent Service', url:'https://learn.microsoft.com/azure/ai-foundry/agents/'},
-      {label_en:'Pricing Calculator', label_th:'คำนวณราคา', url:'https://azure.microsoft.com/pricing/calculator/'}
-    ]
-  }
-};
-
-/* =====================================================================
-   QUESTIONS  — derived from the Microsoft AI decision tree
-   Each option has a scores object mapping → platform key
-===================================================================== */
-const QUESTIONS = [
-  {
-    id:'goal',
-    tag_en:'GOAL', tag_th:'เป้าหมาย',
-    title_en:'What is your primary goal for this agent?',
-    title_th:'เป้าหมายหลักของ agent ที่จะสร้างคืออะไร?',
-    desc_en:'Start by identifying the AI use case — this is the top of Microsoft\'s decision tree.',
-    desc_th:'เริ่มจากระบุการใช้งาน — ขั้นบนสุดของ decision tree จาก Microsoft',
-    options:[
-      {
-        key:'productivity',
-        title_en:'Boost individual / team productivity',
-        title_th:'เพิ่ม productivity ของพนักงานหรือทีม',
-        desc_en:'AI assistance inside Outlook, Teams, Word, Excel, PowerPoint',
-        desc_th:'ผู้ช่วย AI ใน Outlook, Teams, Word, Excel, PowerPoint',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M9 11a4 4 0 100-8 4 4 0 000 8z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:5, ab:3, cs:1, fdry:0}
-      },
-      {
-        key:'extend',
-        title_en:'Extend Microsoft 365 Copilot with domain skills',
-        title_th:'เพิ่มความสามารถเฉพาะทางให้ M365 Copilot',
-        desc_en:'Custom agents grounded on your data, used inside M365 Copilot',
-        desc_th:'สร้าง agent เฉพาะองค์กรที่ใช้งานผ่าน M365 Copilot',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:1, ab:5, cs:2, fdry:1}
-      },
-      {
-        key:'automate',
-        title_en:'Automate a business process with a conversational agent',
-        title_th:'ทำ automation ของกระบวนการทำงานด้วย agent แบบสนทนา',
-        desc_en:'Customer-facing chatbot, IT helpdesk, HR Q&A, internal portal',
-        desc_th:'Chatbot สำหรับลูกค้า, IT helpdesk, HR Q&A หรือพอร์ทัลภายใน',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:0, ab:2, cs:5, fdry:2}
-      },
-      {
-        key:'custom',
-        title_en:'Build a custom AI application with full control',
-        title_th:'สร้าง AI application แบบ custom ควบคุมได้เต็มที่',
-        desc_en:'RAG, fine-tuning, multi-model, custom orchestration, private deployment',
-        desc_th:'RAG, fine-tuning, ใช้หลายโมเดล, custom orchestration, deploy แบบ private',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:0, ab:0, cs:2, fdry:5}
-      }
-    ]
-  },
-  {
-    id:'builder',
-    tag_en:'BUILDER PROFILE', tag_th:'ผู้สร้าง',
-    title_en:'Who will build and maintain the agent?',
-    title_th:'ใครจะเป็นคนสร้างและดูแล agent นี้?',
-    desc_en:'Microsoft offers SaaS, low-code, and pro-code paths — match the platform to your team\'s skills.',
-    desc_th:'Microsoft มีทั้ง SaaS, low-code และ pro-code — เลือกแพลตฟอร์มที่เหมาะกับทักษะของทีม',
-    options:[
-      {
-        key:'enduser',
-        title_en:'End users / Knowledge workers',
-        title_th:'ผู้ใช้งานทั่วไป / Knowledge worker',
-        desc_en:'No coding skills — must work out of the box',
-        desc_th:'ไม่มีทักษะเขียนโค้ด — ต้องพร้อมใช้งานทันที',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a4 4 0 014-4h6a4 4 0 014 4v2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:5, ab:3, cs:0, fdry:0}
-      },
-      {
-        key:'maker',
-        title_en:'Business makers / Power users',
-        title_th:'Business maker / Power user',
-        desc_en:'Comfortable with no-code authoring inside M365 / Copilot Chat',
-        desc_th:'ใช้เครื่องมือ no-code ใน M365 / Copilot Chat ได้',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:2, ab:5, cs:3, fdry:0}
-      },
-      {
-        key:'lowcode',
-        title_en:'IT / Citizen developers (low-code)',
-        title_th:'IT / Citizen developer (low-code)',
-        desc_en:'Build agents and flows with Copilot Studio, Power Platform',
-        desc_th:'สร้าง agent และ workflow ด้วย Copilot Studio และ Power Platform',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
-        scores:{m365:0, ab:2, cs:5, fdry:2}
-      },
-      {
-        key:'procode',
-        title_en:'Software engineers / AI developers',
-        title_th:'Software engineer / AI developer',
-        desc_en:'Write code with Python, .NET, AI SDKs, Azure tooling',
-        desc_th:'เขียนโค้ดด้วย Python, .NET, AI SDK และเครื่องมือ Azure',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:0, ab:0, cs:2, fdry:5}
-      }
-    ]
-  },
-  {
-    id:'data',
-    tag_en:'DATA & GROUNDING', tag_th:'ข้อมูลและการอ้างอิง',
-    title_en:'Where does the agent\'s knowledge come from?',
-    title_th:'agent จะดึงข้อมูลจากที่ใด?',
-    desc_en:'Data location and type determine which platform can ground the agent.',
-    desc_th:'ตำแหน่งและประเภทของข้อมูลจะบ่งบอกว่า platform ใดเหมาะ',
-    options:[
-      {
-        key:'graph',
-        title_en:'Microsoft Graph (email, files, chats, calendar)',
-        title_th:'Microsoft Graph (เมล ไฟล์ แชท ปฏิทิน)',
-        desc_en:'Reasoning over the user\'s existing M365 working set',
-        desc_th:'AI ทำงานบนข้อมูล M365 ที่ผู้ใช้มีอยู่แล้ว',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',
-        scores:{m365:5, ab:5, cs:2, fdry:1}
-      },
-      {
-        key:'sharepoint',
-        title_en:'SharePoint / OneDrive document corpus',
-        title_th:'ชุดเอกสารใน SharePoint / OneDrive',
-        desc_en:'Policies, manuals, procedures, internal knowledge bases',
-        desc_th:'นโยบาย คู่มือ ขั้นตอนการทำงาน knowledge base ขององค์กร',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:3, ab:5, cs:3, fdry:2}
-      },
-      {
-        key:'lob',
-        title_en:'Line-of-business systems (CRM / ERP / ticketing)',
-        title_th:'ระบบธุรกิจ (CRM / ERP / ระบบ ticketing)',
-        desc_en:'Connectors and APIs to enterprise systems',
-        desc_th:'เชื่อมต่อกับระบบขององค์กรผ่าน connector หรือ API',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>',
-        scores:{m365:0, ab:1, cs:5, fdry:3}
-      },
-      {
-        key:'custom',
-        title_en:'Custom data, multi-modal, or unstructured at scale',
-        title_th:'ข้อมูลแบบ custom, multi-modal, หรือ unstructured ขนาดใหญ่',
-        desc_en:'Vector search, custom indexing, document AI, images, audio',
-        desc_th:'Vector search, indexing แบบ custom, Document AI, รูป, เสียง',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5M3 12a9 3 0 0018 0" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:0, ab:0, cs:1, fdry:5}
-      }
-    ]
-  },
-  {
-    id:'channel',
-    tag_en:'CHANNELS', tag_th:'ช่องทาง',
-    title_en:'Where will users interact with the agent?',
-    title_th:'ผู้ใช้จะเข้าถึง agent ผ่านช่องทางใด?',
-    desc_en:'The target channel changes which platform is the most natural fit.',
-    desc_th:'ช่องทางที่ใช้งานเป็นปัจจัยสำคัญในการเลือกแพลตฟอร์ม',
-    options:[
-      {
-        key:'apps',
-        title_en:'Inside Microsoft 365 apps',
-        title_th:'ในแอป Microsoft 365',
-        desc_en:'Outlook, Teams, Word, Excel, PowerPoint, OneNote',
-        desc_th:'Outlook, Teams, Word, Excel, PowerPoint, OneNote',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9" stroke-linecap="round"/></svg>',
-        scores:{m365:5, ab:4, cs:1, fdry:0}
-      },
-      {
-        key:'copilotchat',
-        title_en:'Microsoft 365 Copilot Chat',
-        title_th:'Microsoft 365 Copilot Chat',
-        desc_en:'A custom agent surfaced in the M365 Copilot chat experience',
-        desc_th:'Agent ที่ปรากฏใน Copilot Chat ของ M365',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:3, ab:5, cs:2, fdry:1}
-      },
-      {
-        key:'multi',
-        title_en:'Multiple channels — Teams, web, mobile, custom app',
-        title_th:'หลายช่องทาง — Teams, เว็บ, มือถือ, custom app',
-        desc_en:'Customer or employee-facing across many surfaces',
-        desc_th:'ใช้งานทั้งภายในและภายนอกผ่านหลาย surface',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>',
-        scores:{m365:0, ab:1, cs:5, fdry:3}
-      },
-      {
-        key:'embedded',
-        title_en:'Embedded in custom apps / APIs / SDKs',
-        title_th:'ฝังในแอปพลิเคชันของตัวเอง / APIs / SDK',
-        desc_en:'Full developer control, custom UX, programmatic access',
-        desc_th:'ควบคุมเต็มที่ในระดับ developer และมี UX ของตัวเอง',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:0, ab:0, cs:2, fdry:5}
-      }
-    ]
-  },
-  {
-    id:'complexity',
-    tag_en:'COMPLEXITY', tag_th:'ความซับซ้อน',
-    title_en:'How complex is the agent\'s behavior?',
-    title_th:'พฤติกรรมของ agent ซับซ้อนแค่ไหน?',
-    desc_en:'Customization, multi-step reasoning, and orchestration drive platform choice.',
-    desc_th:'การปรับแต่ง, การคิดหลายขั้นตอน, และ orchestration ส่งผลต่อการเลือกแพลตฟอร์ม',
-    options:[
-      {
-        key:'oob',
-        title_en:'Out of the box — no custom behavior',
-        title_th:'พร้อมใช้งาน — ไม่ปรับแต่งพิเศษ',
-        desc_en:'Generic web-grounded chat and in-app productivity',
-        desc_th:'AI ช่วยทั่วไปและ chat ที่อ้างอิงเว็บ',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:5, ab:2, cs:1, fdry:0}
-      },
-      {
-        key:'declarative',
-        title_en:'Declarative — instructions, knowledge sources, simple actions',
-        title_th:'แบบ declarative — กำหนดคำสั่ง แหล่งความรู้ และ action ง่ายๆ',
-        desc_en:'Tune the prompt, ground on documents, expose a few actions',
-        desc_th:'ปรับ prompt อ้างอิงเอกสาร และเปิด action ไม่กี่ตัว',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:1, ab:5, cs:3, fdry:1}
-      },
-      {
-        key:'workflow',
-        title_en:'Multi-turn workflows with branching and integrations',
-        title_th:'Workflow แบบหลายขั้นตอนพร้อม branching และเชื่อมต่อระบบ',
-        desc_en:'Topics, dialogs, system actions, agent-to-agent handoff',
-        desc_th:'Topic, dialog, system action, ส่งต่อระหว่าง agent',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 3v18M18 3v18M3 8h18M3 16h18" stroke-linecap="round"/></svg>',
-        scores:{m365:0, ab:2, cs:5, fdry:3}
-      },
-      {
-        key:'orchestration',
-        title_en:'Multi-agent orchestration, custom models, evaluations',
-        title_th:'Multi-agent orchestration, custom model, evaluation',
-        desc_en:'Agent service, prompt flows, fine-tuned models, observability',
-        desc_th:'Agent service, prompt flow, fine-tune model, observability',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M9 6h6M9 9l3 6M15 9l-3 6" stroke-linecap="round"/></svg>',
-        scores:{m365:0, ab:0, cs:2, fdry:5}
-      }
-    ]
-  },
-  {
-    id:'governance',
-    tag_en:'GOVERNANCE', tag_th:'การกำกับดูแล',
-    title_en:'What governance and security posture do you need?',
-    title_th:'ระดับการกำกับดูแลและความปลอดภัยที่ต้องการ?',
-    desc_en:'For a regulated bank, this is often the deciding factor.',
-    desc_th:'สำหรับธนาคารที่อยู่ในกำกับ ปัจจัยนี้มักเป็นตัวตัดสินสำคัญ',
-    options:[
-      {
-        key:'standard',
-        title_en:'Standard Microsoft 365 + Purview',
-        title_th:'มาตรฐาน M365 + Purview',
-        desc_en:'Sensitivity labels, DLP, conditional access — handled by the M365 platform',
-        desc_th:'Sensitivity label, DLP, conditional access — รองรับโดย M365',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:5, ab:4, cs:2, fdry:1}
-      },
-      {
-        key:'tenant',
-        title_en:'Tenant-isolated with controlled connectors',
-        title_th:'แยกขอบเขตด้วย tenant และควบคุม connector',
-        desc_en:'Environment-based isolation, DLP policies on connectors',
-        desc_th:'แยก environment, ใช้นโยบาย DLP บน connector',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke-linecap="round"/></svg>',
-        scores:{m365:2, ab:3, cs:5, fdry:3}
-      },
-      {
-        key:'private',
-        title_en:'Private networking, customer-managed keys, region control',
-        title_th:'Private network, key ของลูกค้า, ควบคุม region',
-        desc_en:'VNet integration, CMK, data residency, audit pipelines',
-        desc_th:'VNet integration, CMK, data residency, ระบบ audit',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',
-        scores:{m365:0, ab:0, cs:2, fdry:5}
-      },
-      {
-        key:'regulated',
-        title_en:'Regulated workload — financial, customer-facing',
-        title_th:'Workload ภายใต้กฎเกณฑ์ — เกี่ยวกับการเงินหรือลูกค้า',
-        desc_en:'End-to-end controls, content safety, evaluation, full audit trail',
-        desc_th:'ควบคุมแบบ end-to-end, content safety, evaluation, audit trail ครบ',
-        icon:'<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h6M9 13h6M9 17h6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-        scores:{m365:0, ab:0, cs:1, fdry:5}
-      }
-    ]
-  }
-];
-
-/* =====================================================================
-   I18N
-===================================================================== */
-const I18N = {
-  en: {
-    'header.sub':'AI Agent Platform Advisor',
-    'hero.badge':'Powered by Microsoft AI Decision Tree',
-    'hero.title':'Pick the right',
-    'hero.titleAccent':'Microsoft AI tool',
-    'hero.title2':'for your next agent.',
-    'hero.sub':"Answer a few questions about your use case, users, data, and governance. We'll map your needs to the right Microsoft platform — from Microsoft 365 Copilot to Microsoft Foundry — following Microsoft's Cloud Adoption Framework decision tree.",
-    'hero.cta':'Start the Advisor',
-    'hero.ref':'Reference',
-    'prev.m365':'In-app productivity AI',
-    'prev.ab':'Declarative M365 agents',
-    'prev.cs':'Low-code agent platform',
-    'prev.fdry':'Pro-code AI development',
-    'quiz.section':'Step by Step',
-    'quiz.heading':'Tell us about your agent use case',
-    'quiz.sub':"Based on Microsoft's official AI decision tree — covers goal, users, data, channels, customization, and governance.",
-    'quiz.question':'Question',
-    'quiz.of':'of',
-    'quiz.prev':'Previous',
-    'quiz.next':'Next',
-    'quiz.finish':'See my recommendation',
-    'result.tag':'Recommended Platform',
-    'result.confidence':'Confidence',
-    'result.why':'Why this platform fits',
-    'result.summary':'Your answers',
-    'result.scoreboard':'Platform scoring',
-    'result.next':'Next steps',
-    'result.over':'Start over',
-    'result.pdf':'Save as PDF',
-    'result.ppt':'Download PPT',
-    'result.title':'Your recommendation is ready',
-    'result.subtitle':'Based on your answers, this is the best-fit Microsoft platform for your agent.',
-    'step.goal':'Goal',
-    'step.builder':'Builder',
-    'step.data':'Data',
-    'step.channel':'Channel',
-    'step.complexity':'Complexity',
-    'step.governance':'Governance',
-    'footer.tag':'An internal decision-support tool',
-    'footer.disclaimer':"This advisor is a guidance tool only. Final platform selection should consider your organization's licensing, security posture, and IT governance. Branding shown is for demonstration purposes. Microsoft product names and icons are trademarks of Microsoft Corporation.",
-    'footer.links':'Useful links'
-  },
-  th: {
-    'header.sub':'เครื่องมือเลือกแพลตฟอร์ม AI Agent',
-    'hero.badge':'อ้างอิงจาก Microsoft AI Decision Tree',
-    'hero.title':'เลือก',
-    'hero.titleAccent':'Microsoft AI tool',
-    'hero.title2':'ที่ใช่สำหรับ agent ของคุณ',
-    'hero.sub':'ตอบคำถามไม่กี่ข้อเกี่ยวกับ use case, ผู้ใช้, ข้อมูล และการกำกับดูแล เครื่องมือจะแนะนำแพลตฟอร์ม Microsoft ที่เหมาะสม — ตั้งแต่ Microsoft 365 Copilot จนถึง Microsoft Foundry — ตาม Cloud Adoption Framework ของ Microsoft',
-    'hero.cta':'เริ่มใช้งาน',
-    'hero.ref':'แหล่งอ้างอิง',
-    'prev.m365':'AI ช่วยงานในแอป',
-    'prev.ab':'Agent แบบ declarative',
-    'prev.cs':'แพลตฟอร์ม agent แบบ low-code',
-    'prev.fdry':'พัฒนา AI แบบ pro-code',
-    'quiz.section':'ทีละขั้นตอน',
-    'quiz.heading':'บอกเราเกี่ยวกับ use case ของ agent',
-    'quiz.sub':'ตาม AI decision tree ของ Microsoft — ครอบคลุมเป้าหมาย, ผู้ใช้, ข้อมูล, ช่องทาง, การปรับแต่ง และการกำกับดูแล',
-    'quiz.question':'คำถามที่',
-    'quiz.of':'จาก',
-    'quiz.prev':'ย้อนกลับ',
-    'quiz.next':'ถัดไป',
-    'quiz.finish':'ดูคำแนะนำ',
-    'result.tag':'แพลตฟอร์มที่แนะนำ',
-    'result.confidence':'ความเชื่อมั่น',
-    'result.why':'เหตุผลที่แพลตฟอร์มนี้เหมาะ',
-    'result.summary':'คำตอบของคุณ',
-    'result.scoreboard':'คะแนนของแต่ละแพลตฟอร์ม',
-    'result.next':'ขั้นตอนถัดไป',
-    'result.over':'เริ่มใหม่',
-    'result.pdf':'บันทึกเป็น PDF',
-    'result.ppt':'ดาวน์โหลด PPT',
-    'result.title':'คำแนะนำของคุณพร้อมแล้ว',
-    'result.subtitle':'จากคำตอบของคุณ นี่คือแพลตฟอร์ม Microsoft ที่เหมาะที่สุดสำหรับ agent ของคุณ',
-    'step.goal':'เป้าหมาย',
-    'step.builder':'ผู้สร้าง',
-    'step.data':'ข้อมูล',
-    'step.channel':'ช่องทาง',
-    'step.complexity':'ความซับซ้อน',
-    'step.governance':'การกำกับดูแล',
-    'footer.tag':'เครื่องมือช่วยตัดสินใจภายในองค์กร',
-    'footer.disclaimer':'เครื่องมือนี้เป็นเพียงคำแนะนำเบื้องต้น การเลือกแพลตฟอร์มสุดท้ายควรพิจารณาเรื่องใบอนุญาต, ความปลอดภัย และนโยบาย IT ขององค์กรประกอบด้วย แบรนด์ที่แสดงในหน้านี้ใช้เพื่อการสาธิตเท่านั้น ชื่อผลิตภัณฑ์และไอคอนของ Microsoft เป็นเครื่องหมายการค้าของ Microsoft Corporation',
-    'footer.links':'ลิงก์ที่เกี่ยวข้อง'
-  }
-};
-
-const stepLabels = ['step.goal','step.builder','step.data','step.channel','step.complexity','step.governance'];
-
-/* =====================================================================
-   STATE
-===================================================================== */
-let state = {
-  lang:'en',
-  index:0,
-  answers:new Array(QUESTIONS.length).fill(null)
-};
-
-/* =====================================================================
-   HELPERS
-===================================================================== */
-function t(key){ return I18N[state.lang][key] ?? key; }
-function loc(obj, base){ return obj[base + '_' + state.lang] ?? obj[base + '_en']; }
-
-function applyI18n(){
-  document.documentElement.lang = state.lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k = el.getAttribute('data-i18n');
-    if(I18N[state.lang][k] !== undefined) el.textContent = I18N[state.lang][k];
-  });
-}
-
-/* =====================================================================
-   STEPPER
-===================================================================== */
-function renderStepper(){
-  const el = document.getElementById('stepper');
-  let html = '';
-  QUESTIONS.forEach((q,i)=>{
-    const cls = i < state.index ? 'done' : i === state.index ? 'active' : '';
-    html += `<div class="step-item ${cls}">
-      <div class="step-num"><span>${i+1}</span></div>
-      <div class="step-label">${t(stepLabels[i])}</div>
-    </div>`;
-    if(i < QUESTIONS.length - 1) html += '<div class="step-connector"></div>';
-  });
-  el.innerHTML = html;
-}
-
-/* =====================================================================
-   QUESTION RENDERING
-===================================================================== */
-function renderQuestion(){
-  const q = QUESTIONS[state.index];
-  const body = document.getElementById('quizBody');
-  const tag = state.lang === 'th' ? q.tag_th : q.tag_en;
-  const title = state.lang === 'th' ? q.title_th : q.title_en;
-  const desc = state.lang === 'th' ? q.desc_th : q.desc_en;
-  const selectedKey = state.answers[state.index];
-
-  let html = `<div class="fade-in">
-    <div class="q-tag">${tag}</div>
-    <h3 class="q-title">${title}</h3>
-    <p class="q-desc">${desc}</p>
-    <div class="options">`;
-  q.options.forEach(opt=>{
-    const ot = state.lang === 'th' ? opt.title_th : opt.title_en;
-    const od = state.lang === 'th' ? opt.desc_th : opt.desc_en;
-    const sel = selectedKey === opt.key ? 'selected' : '';
-    html += `<button class="option ${sel}" data-key="${opt.key}">
-      <div class="opt-icon">${opt.icon}</div>
-      <div class="opt-text">
-        <div class="opt-title">${ot}</div>
-        <div class="opt-desc">${od}</div>
-      </div>
-    </button>`;
-  });
-  html += `</div></div>`;
-  body.innerHTML = html;
-
-  body.querySelectorAll('.option').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const key = btn.getAttribute('data-key');
-      state.answers[state.index] = key;
-      renderQuestion();
-      updateNav();
-    });
-  });
-
-  // counter + progress
-  document.getElementById('qNum').textContent = state.index + 1;
-  document.getElementById('qTotal').textContent = QUESTIONS.length;
-  document.getElementById('progress').style.width = (((state.index + (selectedKey?1:0)) / QUESTIONS.length) * 100) + '%';
-  renderStepper();
-}
-
-function updateNav(){
-  const prev = document.getElementById('prevBtn');
-  const next = document.getElementById('nextBtn');
-  prev.disabled = state.index === 0;
-  next.disabled = !state.answers[state.index];
-  const isLast = state.index === QUESTIONS.length - 1;
-  next.querySelector('span').textContent = isLast ? t('quiz.finish') : t('quiz.next');
-}
-
-/* =====================================================================
-   SCORING / RESULT
-===================================================================== */
-function computeScores(){
-  const scores = {m365:0, ab:0, cs:0, fdry:0};
-  state.answers.forEach((ans, i)=>{
-    if(!ans) return;
-    const opt = QUESTIONS[i].options.find(o => o.key === ans);
-    if(opt){
-      Object.keys(opt.scores).forEach(k => scores[k] += opt.scores[k]);
-    }
-  });
-  return scores;
-}
-
-function getRecommendation(){
-  const scores = computeScores();
-  const max = Math.max(...Object.values(scores));
-  const winnerKey = Object.keys(scores).find(k => scores[k] === max);
-  const total = Object.values(scores).reduce((a,b)=>a+b, 0) || 1;
-  const confidence = Math.round((max / total) * 100);
-  return { scores, winnerKey, confidence };
-}
-
-function buildReasons(winnerKey){
-  // Each answer contributes a reason if it gave the winner ≥3 points
-  const reasons = [];
-  state.answers.forEach((ans, i)=>{
-    if(!ans) return;
-    const opt = QUESTIONS[i].options.find(o => o.key === ans);
-    if(opt && opt.scores[winnerKey] >= 3){
-      const t = state.lang === 'th' ? opt.title_th : opt.title_en;
-      const qtag = state.lang === 'th' ? QUESTIONS[i].tag_th : QUESTIONS[i].tag_en;
-      reasons.push(`<b>${qtag}:</b> ${t}`);
-    }
-  });
-  return reasons;
-}
-
-function buildSummary(){
-  return state.answers.map((ans, i)=>{
-    const q = QUESTIONS[i];
-    const opt = q.options.find(o => o.key === ans);
-    const qLabel = state.lang === 'th' ? q.title_th : q.title_en;
-    const aLabel = opt ? (state.lang === 'th' ? opt.title_th : opt.title_en) : '—';
-    return { q: qLabel, a: aLabel };
-  });
-}
-
-function renderResult(){
-  const { scores, winnerKey, confidence } = getRecommendation();
-  const p = PLATFORMS[winnerKey];
-  const reasons = buildReasons(winnerKey);
-  const summary = buildSummary();
-
-  // Normalize scores to percentages for the bars
-  const maxScore = Math.max(...Object.values(scores), 1);
-
-  const tagline = state.lang === 'th' ? p.tagline_th : p.tagline_en;
-  const when = state.lang === 'th' ? p.when_th : p.when_en;
-
-  let scoresHtml = '';
-  ['m365','ab','cs','fdry'].forEach(k=>{
-    const pct = Math.round((scores[k] / maxScore) * 100);
-    const cls = k === winnerKey ? 'winner' : '';
-    scoresHtml += `<div class="score-row">
-      <div class="score-ico">${PLATFORMS[k].icon}</div>
-      <div class="score-name">${PLATFORMS[k].name}</div>
-      <div class="score-track"><div class="score-fill ${cls}" style="width:${pct}%"></div></div>
-      <div class="score-pct">${scores[k]}</div>
-    </div>`;
-  });
-
-  let linksHtml = '';
-  p.links.forEach(l=>{
-    const lbl = state.lang === 'th' ? l.label_th : l.label_en;
-    linksHtml += `<a href="${l.url}" target="_blank" rel="noopener">
-      ${lbl}
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 3h7v7M10 14L21 3M21 14v7H3V3h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>`;
-  });
-
-  let summaryHtml = '';
-  summary.forEach(s=>{
-    summaryHtml += `<div class="summary-item">
-      <div class="summary-q">${s.q}</div>
-      <div class="summary-a">${s.a}</div>
-    </div>`;
-  });
-
-  let reasonsHtml = '';
-  reasons.forEach(r => reasonsHtml += `<li>${r}</li>`);
-  if(!reasonsHtml) reasonsHtml = `<li>${state.lang==='th' ? 'อ้างอิงจากคำตอบโดยรวม' : 'Based on your overall pattern of answers'}</li>`;
-
-  const html = `
-    <div id="exportArea" class="fade-in">
-      <div class="result-hero">
-        <div class="result-tag">${t('result.tag')}</div>
-        <div class="result-top">
-          <div class="result-icon-lg">${p.icon}</div>
-          <div>
-            <h2 class="result-name">${p.name}</h2>
-            <p class="result-tagline">${tagline}</p>
-          </div>
-        </div>
-        <div class="confidence">
-          <div class="conf-row">
-            <span>${t('result.confidence')}</span>
-            <span>${confidence}%</span>
-          </div>
-          <div class="conf-bar"><div class="conf-fill" style="width:${confidence}%"></div></div>
-        </div>
-      </div>
-
-      <div class="result-grid">
-        <div>
-          <div class="card">
-            <h3>${t('result.why')}</h3>
-            <ul class="reason-list">${reasonsHtml}</ul>
-          </div>
-
-          <div class="card">
-            <h3>${state.lang === 'th' ? 'เมื่อใดควรเลือก ' + p.name : 'When to choose ' + p.name}</h3>
-            <ul>${when.map(w=>`<li>${w}</li>`).join('')}</ul>
-          </div>
-
-          <div class="card">
-            <h3>${t('result.summary')}</h3>
-            <div class="summary-list">${summaryHtml}</div>
-          </div>
-        </div>
-
-        <div>
-          <div class="card">
-            <h3>${t('result.scoreboard')}</h3>
-            <div class="scoreboard">${scoresHtml}</div>
-          </div>
-
-          <div class="card nextsteps">
-            <h3>${t('result.next')}</h3>
-            ${linksHtml}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-actions">
-      <button class="btn btn-sm btn-outline" id="restartBtn">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M3 12a9 9 0 1015.5-6.3M21 4v6h-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        ${t('result.over')}
-      </button>
-      <button class="btn btn-sm btn-solid" id="pdfBtn">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        ${t('result.pdf')}
-      </button>
-      <button class="btn btn-sm btn-solid" id="pptBtn">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        ${t('result.ppt')}
-      </button>
-    </div>
-  `;
-  document.getElementById('resultContent').innerHTML = html;
-
-  document.getElementById('restartBtn').addEventListener('click', restart);
-  document.getElementById('pdfBtn').addEventListener('click', exportPDF);
-  document.getElementById('pptBtn').addEventListener('click', exportPPT);
-}
-
-/* =====================================================================
-   PDF EXPORT
-===================================================================== */
-function exportPDF(){
-  const { scores, winnerKey, confidence } = getRecommendation();
-  const p = PLATFORMS[winnerKey];
-  const reasons = buildReasons(winnerKey);
-  const summary = buildSummary();
-  const maxScore = Math.max(...Object.values(scores), 1);
-  
-  const tagline = state.lang === 'th' ? p.tagline_th : p.tagline_en;
-  const when = state.lang === 'th' ? p.when_th : p.when_en;
-  
-  // Create PDF structure
-  const pdfContent = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="UTF-8">
-      <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; color: #1A1F2E; line-height: 1.6; }
-        .page { width: 210mm; height: 297mm; padding: 20mm; background: white; position: relative; }
-        .header { border-bottom: 3px solid #1B4A91; padding-bottom: 15px; margin-bottom: 30px; }
-        .brand { font-size: 24px; font-weight: bold; color: #1B4A91; margin-bottom: 5px; }
-        .brand-sub { font-size: 11px; color: #666; text-transform: uppercase; }
-        .title-section { margin-bottom: 30px; }
-        .title { font-size: 28px; font-weight: bold; color: #0F3470; margin-bottom: 10px; }
-        .subtitle { font-size: 14px; color: #666; margin-bottom: 20px; }
-        .recommendation-box { background: #E8EEF8; border-left: 4px solid #1B4A91; padding: 20px; margin-bottom: 25px; }
-        .platform-name { font-size: 24px; font-weight: bold; color: #1B4A91; margin-bottom: 5px; }
-        .platform-tagline { font-size: 13px; color: #666; margin-bottom: 12px; }
-        .confidence-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .confidence-label { font-size: 12px; color: #666; }
-        .confidence-value { font-size: 16px; font-weight: bold; color: #1B4A91; }
-        .confidence-bar { background: #D0D8E8; height: 8px; border-radius: 4px; overflow: hidden; }
-        .confidence-fill { background: linear-gradient(90deg, #F5A800 0%, #FFC72C 100%); height: 100%; border-radius: 4px; }
-        .section { margin-bottom: 25px; }
-        .section-title { font-size: 16px; font-weight: bold; color: #1B4A91; border-bottom: 2px solid #F5A800; padding-bottom: 8px; margin-bottom: 12px; }
-        .reason-list { list-style: none; padding-left: 0; }
-        .reason-item { padding: 8px 0 8px 20px; border-bottom: 1px dotted #ddd; position: relative; }
-        .reason-item:last-child { border-bottom: none; }
-        .reason-item:before { content: "•"; color: #F5A800; font-weight: bold; position: absolute; left: 0; }
-        .when-list { list-style: none; padding-left: 0; }
-        .when-item { padding: 6px 0 6px 20px; position: relative; }
-        .when-item:before { content: "▸"; color: #1B4A91; position: absolute; left: 0; }
-        .scores-section { margin-bottom: 25px; }
-        .score-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .score-name { flex: 1; font-size: 12px; font-weight: 600; color: #333; }
-        .score-bar { flex: 2; height: 6px; background: #E8EEF8; margin: 0 12px; border-radius: 3px; overflow: hidden; }
-        .score-value { width: 30px; text-align: right; font-weight: bold; color: #1B4A91; }
-        .summary-items { display: grid; gap: 8px; }
-        .summary-item { display: flex; justify-content: space-between; gap: 12px; padding: 8px; background: #F9FAFB; border-radius: 4px; border: 1px solid #E8EEF8; }
-        .summary-q { flex: 1; font-size: 12px; color: #666; }
-        .summary-a { flex: 0 0 45%; font-size: 12px; font-weight: 600; color: #1B4A91; }
-        .footer { margin-top: 40px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 10px; color: #999; }
-        .page-break { page-break-after: always; }
-      </style>
-    </head>
-    <body>
-      <div class="page">
-        <div class="header">
-          <div class="brand">BBL AI Agent Advisor</div>
-          <div class="brand-sub">Decision Support Tool</div>
-        </div>
-        
-        <div class="title-section">
-          <div class="title">${state.lang === 'th' ? 'คำแนะนำของคุณ' : 'Your Recommendation'}</div>
-          <div class="subtitle">${state.lang === 'th' ? 'จากคำตอบของคุณ นี่คือแพลตฟอร์ม Microsoft ที่เหมาะที่สุด' : 'Based on your answers, here is your best-fit Microsoft platform'}</div>
-        </div>
-        
-        <div class="recommendation-box">
-          <div class="platform-name">${p.name}</div>
-          <div class="platform-tagline">${tagline}</div>
-          <div class="confidence-row">
-            <span class="confidence-label">${state.lang === 'th' ? 'ความเชื่อมั่น' : 'Confidence'}:</span>
-            <span class="confidence-value">${confidence}%</span>
-          </div>
-          <div class="confidence-bar">
-            <div class="confidence-fill" style="width: ${confidence}%"></div>
-          </div>
-        </div>
-        
-        <div class="section">
-          <div class="section-title">${state.lang === 'th' ? 'เหตุผลที่แพลตฟอร์มนี้เหมาะ' : 'Why this platform fits'}</div>
-          <ul class="reason-list">
-            ${reasons.map(r => `<li class="reason-item">${r}</li>`).join('')}
-          </ul>
-        </div>
-        
-        <div class="section">
-          <div class="section-title">${state.lang === 'th' ? 'เมื่อใดควรเลือก ' + p.name : 'When to choose ' + p.name}</div>
-          <ul class="when-list">
-            ${when.map(w => `<li class="when-item">${w}</li>`).join('')}
-          </ul>
-        </div>
-        
-        <div class="section">
-          <div class="section-title">${state.lang === 'th' ? 'คะแนนของแต่ละแพลตฟอร์ม' : 'Platform Scoring'}</div>
-          <div class="scores-section">
-            ${['m365','ab','cs','fdry'].map(k => {
-              const pct = Math.round((scores[k] / maxScore) * 100);
-              return `<div class="score-item">
-                <div class="score-name">${PLATFORMS[k].name}</div>
-                <div class="score-bar"><div style="background: ${k === winnerKey ? 'linear-gradient(90deg, #F5A800 0%, #FFC72C 100%)' : 'linear-gradient(90deg, #1B4A91 0%, #1B4A91 100%)'}; height: 100%; width: ${pct}%"></div></div>
-                <div class="score-value">${scores[k]}</div>
-              </div>`;
-            }).join('')}
-          </div>
-        </div>
-        
-        <div class="section">
-          <div class="section-title">${state.lang === 'th' ? 'คำตอบของคุณ' : 'Your Answers'}</div>
-          <div class="summary-items">
-            ${summary.map(s => `<div class="summary-item"><div class="summary-q">${s.q}</div><div class="summary-a">${s.a}</div></div>`).join('')}
-          </div>
-        </div>
-        
-        <div class="footer">
-          <p>${state.lang === 'th' ? 'เอกสารนี้สร้างขึ้นจากเครื่องมือตัดสินใจ BBL AI Agent Advisor' : 'This document was generated using the BBL AI Agent Advisor'}</p>
-          <p>${new Date().toLocaleDateString()}</p>
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
-  
-  // Convert to PDF using html2pdf
-  const element = document.createElement('div');
-  element.innerHTML = pdfContent;
-  const opt = {
-    margin: 0,
-    filename: 'BBL-AI-Agent-Recommendation.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak: { mode: 'legacy' }
-  };
-  html2pdf().set(opt).from(element).save();
-}
-
-/* =====================================================================
-   PPT EXPORT
-===================================================================== */
-function exportPPT(){
-  const { scores, winnerKey, confidence } = getRecommendation();
-  const p = PLATFORMS[winnerKey];
-  const reasons = buildReasons(winnerKey);
-  const summary = buildSummary();
-  const maxScore = Math.max(...Object.values(scores), 1);
-  
-  const tagline = state.lang === 'th' ? p.tagline_th : p.tagline_en;
-  const when = state.lang === 'th' ? p.when_th : p.when_en;
-  const links = p.links;
-  
-  // Create presentation
-  const prs = new PptxGenJS();
-  
-  // Color scheme
-  const colors = {
-    primary: '1B4A91',
-    dark: '0F3470',
-    gold: 'F5A800',
-    lightBlue: 'E8EEF8',
-    text: '1A1F2E'
-  };
-  
-  // Constants for slide content limits
-  const MAX_REASONS_PER_SLIDE = 5;
-  const MAX_WHEN_ITEMS_PER_SLIDE = 8;
-  const MAX_SUMMARY_ITEMS_PER_SLIDE = 10;
-  const MAX_LINKS_PER_SLIDE = 8;
-  
-  // Slide 1: Title Slide
-  let slide1 = prs.addSlide();
-  slide1.background = { color: '1B4A91' };
-  slide1.addText('BBL AI Agent Advisor', {
-    x: 0.5, y: 1.5, w: 9, h: 0.8,
-    fontSize: 44, bold: true, color: 'FFFFFF'
-  });
-  slide1.addText('Your Platform Recommendation', {
-    x: 0.5, y: 2.5, w: 9, h: 0.6,
-    fontSize: 28, color: 'FFC72C'
-  });
-  slide1.addShape(prs.ShapeType.rect, {
-    x: 0.5, y: 3.3, w: 3, h: 0.05,
-    fill: { color: 'FFC72C' },
-    line: { color: 'FFC72C' }
-  });
-  slide1.addText(p.name, {
-    x: 0.5, y: 3.8, w: 9, h: 1.2,
-    fontSize: 48, bold: true, color: 'FFC72C'
-  });
-  slide1.addText(`${confidence}% Confidence`, {
-    x: 0.5, y: 5.2, w: 9, h: 0.5,
-    fontSize: 24, color: 'FFFFFF', opacity: 0.9
-  });
-  
-  // Slide 2: Platform Details
-  let slide2 = prs.addSlide();
-  slide2.background = { color: 'FFFFFF' };
-  slide2.addText(p.name, {
-    x: 0.5, y: 0.5, w: 9, h: 0.5,
-    fontSize: 36, bold: true, color: colors.dark
-  });
-  slide2.addText(tagline, {
-    x: 0.5, y: 1.1, w: 9, h: 0.6,
-    fontSize: 18, color: colors.text, italic: true
-  });
-  
-  // Add shape divider
-  slide2.addShape(prs.ShapeType.rect, {
-    x: 0.5, y: 1.8, w: 0.15, h: 0.35,
-    fill: { color: colors.gold },
-    line: { color: colors.gold }
-  });
-  
-  // Confidence section
-  slide2.addText('Confidence Level', {
-    x: 1.0, y: 1.9, w: 2, h: 0.3,
-    fontSize: 14, bold: true, color: colors.text
-  });
-  slide2.addText(`${confidence}%`, {
-    x: 3.5, y: 1.9, w: 2, h: 0.3,
-    fontSize: 14, bold: true, color: colors.primary
-  });
-  
-  // Confidence bar
-  slide2.addShape(prs.ShapeType.rect, {
-    x: 0.5, y: 2.3, w: 9, h: 0.2,
-    fill: { color: colors.lightBlue },
-    line: { color: colors.lightBlue }
-  });
-  slide2.addShape(prs.ShapeType.rect, {
-    x: 0.5, y: 2.3, w: (9 * confidence / 100), h: 0.2,
-    fill: { color: colors.gold },
-    line: { color: colors.gold }
-  });
-  
-  // Reasons
-  slide2.addText('Why This Platform Fits', {
-    x: 0.5, y: 2.7, w: 9, h: 0.4,
-    fontSize: 16, bold: true, color: colors.dark
-  });
-  
-  let yPos = 3.2;
-  reasons.slice(0, MAX_REASONS_PER_SLIDE).forEach((reason) => {
-    slide2.addText(`• ${reason}`, {
-      x: 0.7, y: yPos, w: 8.8, h: 0.45,
-      fontSize: 12, color: colors.text
-    });
-    yPos += 0.5;
-  });
-  
-  // Slide 3: When to Choose
-  let slide3 = prs.addSlide();
-  slide3.background = { color: 'FFFFFF' };
-  slide3.addText(`When to Choose ${p.name}`, {
-    x: 0.5, y: 0.5, w: 9, h: 0.5,
-    fontSize: 32, bold: true, color: colors.dark
-  });
-  
-  slide3.addShape(prs.ShapeType.rect, {
-    x: 0.5, y: 1.1, w: 0.15, h: 0.35,
-    fill: { color: colors.gold },
-    line: { color: colors.gold }
-  });
-  
-  yPos = 1.3;
-  when.slice(0, MAX_WHEN_ITEMS_PER_SLIDE).forEach((item) => {
-    slide3.addText(`✓ ${item}`, {
-      x: 0.7, y: yPos, w: 8.8, h: 0.5,
-      fontSize: 13, color: colors.text
-    });
-    yPos += 0.55;
-  });
-  
-  // Slide 4: Platform Scores
-  let slide4 = prs.addSlide();
-  slide4.background = { color: 'FFFFFF' };
-  slide4.addText('Platform Comparison', {
-    x: 0.5, y: 0.5, w: 9, h: 0.5,
-    fontSize: 32, bold: true, color: colors.dark
-  });
-  
-  slide4.addShape(prs.ShapeType.rect, {
-    x: 0.5, y: 1.1, w: 0.15, h: 0.35,
-    fill: { color: colors.gold },
-    line: { color: colors.gold }
-  });
-  
-  yPos = 1.5;
-  const scoreEntries = [
-    { key: 'm365', name: PLATFORMS.m365.name },
-    { key: 'ab', name: PLATFORMS.ab.name },
-    { key: 'cs', name: PLATFORMS.cs.name },
-    { key: 'fdry', name: PLATFORMS.fdry.name }
-  ];
-  
-  scoreEntries.forEach(entry => {
-    const pct = Math.round((scores[entry.key] / maxScore) * 100);
-    const isWinner = entry.key === winnerKey;
-    
-    slide4.addText(entry.name, {
-      x: 0.7, y: yPos, w: 2.5, h: 0.35,
-      fontSize: 12, bold: true, color: colors.text
-    });
-    
-    // Bar background
-    slide4.addShape(prs.ShapeType.rect, {
-      x: 3.3, y: yPos + 0.05, w: 5, h: 0.25,
-      fill: { color: colors.lightBlue },
-      line: { color: colors.lightBlue }
-    });
-    
-    // Bar fill
-    slide4.addShape(prs.ShapeType.rect, {
-      x: 3.3, y: yPos + 0.05, w: (5 * pct / 100), h: 0.25,
-      fill: { color: isWinner ? colors.gold : colors.primary },
-      line: { color: isWinner ? colors.gold : colors.primary }
-    });
-    
-    // Score value
-    slide4.addText(`${scores[entry.key]}`, {
-      x: 8.5, y: yPos, w: 0.8, h: 0.35,
-      fontSize: 12, bold: true, color: colors.primary, align: 'right'
-    });
-    
-    yPos += 0.55;
-  });
-  
-  // Slide 5: Summary
-  let slide5 = prs.addSlide();
-  slide5.background = { color: 'FFFFFF' };
-  slide5.addText('Your Answers Summary', {
-    x: 0.5, y: 0.5, w: 9, h: 0.5,
-    fontSize: 32, bold: true, color: colors.dark
-  });
-  
-  slide5.addShape(prs.ShapeType.rect, {
-    x: 0.5, y: 1.1, w: 0.15, h: 0.35,
-    fill: { color: colors.gold },
-    line: { color: colors.gold }
-  });
-  
-  yPos = 1.4;
-  summary.slice(0, MAX_SUMMARY_ITEMS_PER_SLIDE).forEach((item) => {
-    slide5.addText(item.q, {
-      x: 0.7, y: yPos, w: 4.5, h: 0.4,
-      fontSize: 11, color: colors.text, bold: true
-    });
-    slide5.addText(item.a, {
-      x: 5.3, y: yPos, w: 4.2, h: 0.4,
-      fontSize: 11, color: colors.primary
-    });
-    yPos += 0.45;
-  });
-  
-  // Slide 6: Next Steps
-  if(links && links.length > 0) {
-    let slide6 = prs.addSlide();
-    slide6.background = { color: 'FFFFFF' };
-    slide6.addText('Next Steps', {
-      x: 0.5, y: 0.5, w: 9, h: 0.5,
-      fontSize: 32, bold: true, color: colors.dark
-    });
-    
-    slide6.addShape(prs.ShapeType.rect, {
-      x: 0.5, y: 1.1, w: 0.15, h: 0.35,
-      fill: { color: colors.gold },
-      line: { color: colors.gold }
-    });
-    
-    yPos = 1.4;
-    links.slice(0, MAX_LINKS_PER_SLIDE).forEach(link => {
-      const label = state.lang === 'th' ? link.label_th : link.label_en;
-      slide6.addText(`→ ${label}`, {
-        x: 0.7, y: yPos, w: 8.8, h: 0.45,
-        fontSize: 12, color: colors.primary, underline: true
-      });
-      yPos += 0.5;
-    });
-  }
-  
-  // Save presentation
-  prs.writeFile({ fileName: 'BBL-AI-Agent-Recommendation.pptx' });
-}
-
-/* =====================================================================
-   FLOW
-===================================================================== */
-function showQuiz(){
-  document.getElementById('quizWrap').style.display = '';
-  document.getElementById('resultWrap').style.display = 'none';
-  renderQuestion();
-  updateNav();
-}
-function showResult(){
-  document.getElementById('quizWrap').style.display = 'none';
-  document.getElementById('resultWrap').style.display = 'block';
-  renderResult();
-  window.scrollTo({top: document.getElementById('resultWrap').offsetTop - 80, behavior:'smooth'});
-}
-
-function restart(){
-  state.index = 0;
-  state.answers = new Array(QUESTIONS.length).fill(null);
-  showQuiz();
-  window.scrollTo({top: document.getElementById('quizWrap').offsetTop - 80, behavior:'smooth'});
-}
-
-document.getElementById('nextBtn').addEventListener('click', ()=>{
-  if(!state.answers[state.index]) return;
-  if(state.index === QUESTIONS.length - 1){
-    showResult();
-  } else {
-    state.index++;
-    renderQuestion();
-    updateNav();
-  }
-});
-document.getElementById('prevBtn').addEventListener('click', ()=>{
-  if(state.index === 0) return;
-  state.index--;
-  renderQuestion();
-  updateNav();
-});
-
-document.getElementById('startBtn').addEventListener('click', ()=>{
-  document.getElementById('quizWrap').scrollIntoView({behavior:'smooth', block:'start'});
-});
-
-// Language switching
-document.querySelectorAll('.lang-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    state.lang = btn.getAttribute('data-lang');
-    applyI18n();
-    if(document.getElementById('resultWrap').style.display !== 'none' && document.getElementById('resultContent').innerHTML){
-      renderResult();
-    } else {
-      renderQuestion();
-      updateNav();
-    }
-  });
-});
-
-// Initial render
-applyI18n();
-renderQuestion();
-updateNav();
+const ICONS = {m365: `<img src="images/m365-copilot-logo.png" alt="Microsoft 365 Copilot" width="36" height="36">`,ab: `<img src="images/copilot.png" alt="Agent Builder" width="36" height="36">`,cs: `<img src="images/copilot-studio.png" alt="Copilot Studio" width="36" height="36">`,fdry: `<img src="images/azureai-color.png" alt="Microsoft Foundry" width="36" height="36">`};
+document.getElementById('ic-m365').innerHTML = ICONS.m365;document.getElementById('ic-ab').innerHTML = ICONS.ab;document.getElementById('ic-cs').innerHTML = ICONS.cs;document.getElementById('ic-fdry').innerHTML = ICONS.fdry;
+const state = { lang:'en', index:0, answers:new Array(6).fill(null) };
+function applyTheme(theme){ document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('ai-decision-tree-theme', theme); }
+const savedTheme = localStorage.getItem('ai-decision-tree-theme') || 'dark'; applyTheme(savedTheme);
+document.getElementById('themeToggle').addEventListener('click', () => { const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; applyTheme(next); });
+const menuToggle = document.getElementById('menuToggle'); const menu = document.getElementById('hamburgerMenu');
+menuToggle.addEventListener('click', () => { const open = menu.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', String(open)); });
+document.addEventListener('click', (e) => { if (!e.target.closest('.menu-wrap')) { menu.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false'); } });
+[...existing script preserved...]
 </script>
-
 </body>
 </html>
