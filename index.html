@@ -123,6 +123,7 @@
   }
   .platform-pill:hover{background:rgba(255,255,255,.13);transform:translateY(-2px)}
   .platform-pill .pico{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:white;display:flex;align-items:center;justify-content:center;padding:6px}
+  .platform-pill .pico img{width:48px;height:48px;object-fit:contain}
   .platform-pill .ptext{font-size:13px}
   .platform-pill .ptext b{display:block;font-weight:700;font-size:14px;margin-bottom:2px}
   .platform-pill .ptext span{opacity:.75;font-size:11.5px}
@@ -475,16 +476,16 @@
 ===================================================================== */
 const ICONS = {
   /* Microsoft 365 Copilot — using image file */
-  m365: `<img src="images/m365-copilot-logo.png" alt="Microsoft 365 Copilot" style="width: 48px; height: 48px; object-fit: contain;">`,
+  m365: `<img src="images/m365-copilot-logo.png" alt="Microsoft 365 Copilot">`,
 
   /* Agent Builder — using image file */
-  ab: `<img src="images/copilot.png" alt="Agent Builder" style="width: 48px; height: 48px; object-fit: contain;">`,
+  ab: `<img src="images/copilot.png" alt="Agent Builder">`,
 
   /* Copilot Studio — using image file */
-  cs: `<img src="images/copilot-studio.png" alt="Copilot Studio" style="width: 48px; height: 48px; object-fit: contain;">`,
+  cs: `<img src="images/copilot-studio.png" alt="Copilot Studio">`,
 
   /* Microsoft Foundry — using image file */
-  fdry: `<img src="images/azureai-color.png" alt="Microsoft Foundry" style="width: 48px; height: 48px; object-fit: contain;">`
+  fdry: `<img src="images/azureai-color.png" alt="Microsoft Foundry">`
 };
 
 // Inject hero preview icons
