@@ -353,15 +353,7 @@
   <div class="container header-row">
     <div class="brand">
       <div class="brand-mark" aria-hidden="true">
-        <!-- Stylized lotus (Bualuang) -->
-        <svg viewBox="0 0 64 64" width="32" height="32" fill="none">
-          <path d="M32 8 C36 18 36 24 32 32 C28 24 28 18 32 8Z" fill="#0F3470"/>
-          <path d="M16 16 C24 22 28 28 32 32 C24 30 18 26 16 16Z" fill="#1B4A91"/>
-          <path d="M48 16 C40 22 36 28 32 32 C40 30 46 26 48 16Z" fill="#1B4A91"/>
-          <path d="M10 32 C22 32 28 34 32 36 C20 38 14 38 10 32Z" fill="#062555"/>
-          <path d="M54 32 C42 32 36 34 32 36 C44 38 50 38 54 32Z" fill="#062555"/>
-          <circle cx="32" cy="34" r="4" fill="#FFC72C"/>
-        </svg>
+        <img src="images/bangkok-bank-logo.png" alt="Bangkok Bank" width="32" height="32" style="object-fit: contain;">
       </div>
       <div class="brand-text">
         <div class="brand-name">Bangkok Bank</div>
@@ -454,12 +446,7 @@
       <div>
         <div class="footer-brand">
           <div class="brand-mark">
-            <svg viewBox="0 0 64 64" width="24" height="24" fill="none">
-              <path d="M32 8 C36 18 36 24 32 32 C28 24 28 18 32 8Z" fill="#0F3470"/>
-              <path d="M16 16 C24 22 28 28 32 32 C24 30 18 26 16 16Z" fill="#1B4A91"/>
-              <path d="M48 16 C40 22 36 28 32 32 C40 30 46 26 48 16Z" fill="#1B4A91"/>
-              <circle cx="32" cy="34" r="4" fill="#FFC72C"/>
-            </svg>
+            <img src="images/bangkok-bank-logo.png" alt="Bangkok Bank" width="24" height="24" style="object-fit: contain;">
           </div>
           <div>
             <div style="font-weight:700;color:white">Bangkok Bank · AI Agent Platform Advisor</div>
@@ -487,58 +474,17 @@
    ICONS — inline SVG matching Microsoft visual style
 ===================================================================== */
 const ICONS = {
-  /* Microsoft 365 Copilot — Copilot swirl with M365 badge */
-  m365: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="mg1" x1="0.15" y1="0" x2="0.85" y2="1">
-        <stop offset="0%"   stop-color="#00C7C4"/>
-        <stop offset="35%"  stop-color="#5C6FE8"/>
-        <stop offset="70%"  stop-color="#FF7300"/>
-        <stop offset="100%" stop-color="#FF3DA0"/>
-      </linearGradient>
-    </defs>
-    <!-- Copilot swirl blob: right lobe top → right lobe bottom → waist → left lobe bottom → left lobe top → close -->
-    <path d="M27 4 C34 4 41 9 42 17 C43 23 40 28 36 30 C40 33 42 38 40 43 C38 47 33 48 28 46 C26 45 25 43 24 41 C23 43 22 45 20 46 C15 48 10 47 8 43 C6 38 8 33 12 30 C8 28 5 23 6 17 C7 9 14 4 21 4 Z"
-      fill="url(#mg1)"/>
-    <!-- M365 badge -->
-    <rect x="9" y="34" width="30" height="12" rx="3.5" fill="#0a0a0a"/>
-    <text x="24" y="43.5" font-family="Arial,Helvetica,sans-serif" font-size="7.5" font-weight="bold" fill="white" text-anchor="middle">M365</text>
-  </svg>`,
+  /* Microsoft 365 Copilot — using image file */
+  m365: `<img src="images/m365-copilot-logo.png" alt="Microsoft 365 Copilot" style="width: 48px; height: 48px; object-fit: contain;">`,
 
-  /* Agent Builder — 4 coloured tiles (Copilot extensibility / M365 apps icon) */
-  ab: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <rect x="3"  y="3"  width="19" height="19" rx="5" fill="#7B3FE4"/>
-    <rect x="26" y="3"  width="19" height="19" rx="5" fill="#2DB875"/>
-    <rect x="3"  y="26" width="19" height="19" rx="5" fill="#E84545"/>
-    <rect x="26" y="26" width="19" height="19" rx="5" fill="#F5A623"/>
-  </svg>`,
+  /* Agent Builder — using image file */
+  ab: `<img src="images/copilot.png" alt="Agent Builder" style="width: 48px; height: 48px; object-fit: contain;">`,
 
-  /* Copilot Studio — hexagon with purple → coral gradient */
-  cs: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="csg" x1="0.1" y1="0" x2="0.9" y2="1">
-        <stop offset="0%"   stop-color="#7C3AED"/>
-        <stop offset="100%" stop-color="#F4736A"/>
-      </linearGradient>
-    </defs>
-    <path d="M24 4 L41 14 L41 34 L24 44 L7 34 L7 14 Z" fill="url(#csg)"/>
-  </svg>`,
+  /* Copilot Studio — using image file */
+  cs: `<img src="images/copilot-studio.png" alt="Copilot Studio" style="width: 48px; height: 48px; object-fit: contain;">`,
 
-  /* Microsoft Foundry — stylised blue/purple "A" shape with pink accent */
-  fdry: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="fdg" x1="0.2" y1="1" x2="0.5" y2="0">
-        <stop offset="0%"   stop-color="#3B82F6"/>
-        <stop offset="100%" stop-color="#6D28D9"/>
-      </linearGradient>
-    </defs>
-    <!-- Right rounded-rect cap (upper-right of the A) -->
-    <rect x="27" y="4" width="16" height="16" rx="4" fill="url(#fdg)"/>
-    <!-- Main left diagonal leg of the "A": bottom-left to top-right with angled top edge -->
-    <path d="M5 46 L17 6 C18 3 20 2 23 2 L26 2 C28 2 29 3 30 6 L31 10 L28 10 L27 7 C27 6 26 5 25 5 L23 5 L11 46 Z" fill="url(#fdg)"/>
-    <!-- Pink/magenta vertical strip (the spine connecting leg and cap) -->
-    <rect x="26.5" y="4" width="3" height="42" fill="#C026D3"/>
-  </svg>`
+  /* Microsoft Foundry — using image file */
+  fdry: `<img src="images/azureai-color.png" alt="Microsoft Foundry" style="width: 48px; height: 48px; object-fit: contain;">`
 };
 
 // Inject hero preview icons
