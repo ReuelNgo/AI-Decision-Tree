@@ -379,7 +379,7 @@
 <section class="hero" id="hero">
   <div class="container hero-inner">
     <div>
-      <div class="badge"><svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-right:6px;display:inline-block;vertical-align:middle"><path d="M24 8 L36 20 L32 28 L28 20 L24 26 L20 20 L16 28 L12 20 L24 8 Z" fill="#001A6B"/><path d="M16 28 L12 36 L18 40 L24 32 L30 40 L36 36 L32 28 Z" fill="#001A6B"/></svg><span data-i18n="hero.badge">Made for Bangkok Bank</span></div>
+      <div class="badge"><div id="ic-bbb" style="display:inline-block;width:20px;height:20px;margin-right:6px;vertical-align:middle;"></div><span data-i18n="hero.badge">Made for Bangkok Bank</span></div>
       <h1 data-i18n="hero.title">Pick the right <span class="accent" data-i18n="hero.titleAccent">AI Tool</span></h1>
       <p data-i18n="hero.sub">Answer a few questions about what you're trying to build, and we'll recommend the best Microsoft platform to build it on.</p>
       <div class="hero-cta">
@@ -550,15 +550,11 @@ const ICONS = {
     <ellipse cx="24" cy="24" rx="18" ry="6" fill="none" stroke="url(#fd1)" stroke-width="2.4" transform="rotate(-60 24 24)"/>
   </svg>`,
 
-  bbb: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="bbb1" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#003DB8"/><stop offset="100%" stop-color="#001A6B"/>
-      </linearGradient>
-    </defs>
-    <path d="M24 8 L36 20 L32 28 L28 20 L24 26 L20 20 L16 28 L12 20 L24 8 Z" fill="url(#bbb1)"/>
-    <path d="M16 28 L12 36 L18 40 L24 32 L30 40 L36 36 L32 28 Z" fill="url(#bbb1)"/>
+   bbb: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 8 L36 20 L32 28 L28 20 L24 26 L20 20 L16 28 L12 20 L24 8 Z" fill="#001A6B"/>
+    <path d="M16 28 L12 36 L18 40 L24 32 L30 40 L36 36 L32 28 Z" fill="#001A6B"/>
   </svg>`
+
 };
 
 // Inject hero preview icons
@@ -566,6 +562,7 @@ document.getElementById('ic-m365').innerHTML = ICONS.m365;
 document.getElementById('ic-ab').innerHTML = ICONS.ab;
 document.getElementById('ic-cs').innerHTML = ICONS.cs;
 document.getElementById('ic-fdry').innerHTML = ICONS.fdry;
+document.getElementById('ic-bbb').innerHTML = ICONS.bbb;
 
 /* =====================================================================
    PLATFORM METADATA
@@ -969,7 +966,6 @@ const I18N = {
     'hero.badge':'Made for Bangkok Bank',
     'hero.title':'Pick the right',
     'hero.titleAccent':'AI Tool',
-     'hero.title2':'',
      'hero.sub':'Answer a few questions about what you're trying to build, and we'll recommend the best Microsoft platform to build it on.',
     'hero.cta':'Start the Advisor',
     'hero.ref':'Reference',
