@@ -379,9 +379,9 @@
 <section class="hero" id="hero">
   <div class="container hero-inner">
     <div>
-      <div class="badge"><span class="badge-dot"></span><span data-i18n="hero.badge">Powered by Microsoft AI Decision Tree</span></div>
-      <h1 data-i18n="hero.title">Pick the right <span class="accent" data-i18n="hero.titleAccent">Microsoft AI tool</span> for your next agent.</h1>
-      <p data-i18n="hero.sub">Answer a few questions about your use case, users, data, and governance. We'll map your needs to the right Microsoft platform — from Microsoft 365 Copilot to Microsoft Foundry — following Microsoft's Cloud Adoption Framework decision tree.</p>
+      <div class="badge"><svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-right:6px;display:inline-block;vertical-align:middle"><path d="M24 8 L36 20 L32 28 L28 20 L24 26 L20 20 L16 28 L12 20 L24 8 Z" fill="#001A6B"/><path d="M16 28 L12 36 L18 40 L24 32 L30 40 L36 36 L32 28 Z" fill="#001A6B"/></svg><span data-i18n="hero.badge">Made for Bangkok Bank</span></div>
+      <h1 data-i18n="hero.title">Pick the right <span class="accent" data-i18n="hero.titleAccent">AI Tool</span></h1>
+      <p data-i18n="hero.sub">Answer a few questions about what you're trying to build, and we'll recommend the best Microsoft platform to build it on.</p>
       <div class="hero-cta">
         <button class="btn btn-primary" id="startBtn">
           <span data-i18n="hero.cta">Start the Advisor</span>
@@ -548,6 +548,16 @@ const ICONS = {
     <ellipse cx="24" cy="24" rx="18" ry="6" fill="none" stroke="url(#fd1)" stroke-width="2.4"/>
     <ellipse cx="24" cy="24" rx="18" ry="6" fill="none" stroke="url(#fd1)" stroke-width="2.4" transform="rotate(60 24 24)"/>
     <ellipse cx="24" cy="24" rx="18" ry="6" fill="none" stroke="url(#fd1)" stroke-width="2.4" transform="rotate(-60 24 24)"/>
+  </svg>`,
+
+  bbb: `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bbb1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#003DB8"/><stop offset="100%" stop-color="#001A6B"/>
+      </linearGradient>
+    </defs>
+    <path d="M24 8 L36 20 L32 28 L28 20 L24 26 L20 20 L16 28 L12 20 L24 8 Z" fill="url(#bbb1)"/>
+    <path d="M16 28 L12 36 L18 40 L24 32 L30 40 L36 36 L32 28 Z" fill="url(#bbb1)"/>
   </svg>`
 };
 
@@ -956,11 +966,11 @@ const QUESTIONS = [
 const I18N = {
   en: {
     'header.sub':'AI Agent Platform Advisor',
-    'hero.badge':'Powered by Microsoft AI Decision Tree',
+    'hero.badge':'Made for Bangkok Bank',
     'hero.title':'Pick the right',
-    'hero.titleAccent':'Microsoft AI tool',
-    'hero.title2':'for your next agent.',
-    'hero.sub':"Answer a few questions about your use case, users, data, and governance. We'll map your needs to the right Microsoft platform — from Microsoft 365 Copilot to Microsoft Foundry — following Microsoft's Cloud Adoption Framework decision tree.",
+    'hero.titleAccent':'AI Tool',
+     'hero.title2':'',
+     'hero.sub':'Answer a few questions about what you're trying to build, and we'll recommend the best Microsoft platform to build it on.',
     'hero.cta':'Start the Advisor',
     'hero.ref':'Reference',
     'prev.m365':'In-app productivity AI',
@@ -999,7 +1009,7 @@ const I18N = {
     'header.sub':'เครื่องมือเลือกแพลตฟอร์ม AI Agent',
     'hero.badge':'อ้างอิงจาก Microsoft AI Decision Tree',
     'hero.title':'เลือก',
-    'hero.titleAccent':'Microsoft AI tool',
+    'hero.titleAccent':'AI Tool',
     'hero.title2':'ที่ใช่สำหรับ agent ของคุณ',
     'hero.sub':'ตอบคำถามไม่กี่ข้อเกี่ยวกับ use case, ผู้ใช้, ข้อมูล และการกำกับดูแล เครื่องมือจะแนะนำแพลตฟอร์ม Microsoft ที่เหมาะสม — ตั้งแต่ Microsoft 365 Copilot จนถึง Microsoft Foundry — ตาม Cloud Adoption Framework ของ Microsoft',
     'hero.cta':'เริ่มใช้งาน',
