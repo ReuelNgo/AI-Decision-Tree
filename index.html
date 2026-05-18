@@ -93,6 +93,7 @@
     border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.5px;
     text-transform:uppercase;margin-bottom:20px;
   }
+   .badge-icon{display:inline-block;width:20px;height:20px;vertical-align:middle}
   .badge-dot{width:6px;height:6px;border-radius:50%;background:#FFC72C;box-shadow:0 0 0 4px rgba(255,199,44,.2)}
   .hero h1{font-size:44px;font-weight:800;line-height:1.15;margin:0 0 20px;letter-spacing:-.5px}
   .hero h1 .accent{
@@ -379,7 +380,7 @@
 <section class="hero" id="hero">
   <div class="container hero-inner">
     <div>
-      <div class="badge"><div id="ic-bbb" style="display:inline-block;width:20px;height:20px;margin-right:6px;vertical-align:middle;"></div><span data-i18n="hero.badge">Made for Bangkok Bank</span></div>
+      <div class="badge"><div id="ic-bbb" class="badge-icon"></div><span data-i18n="hero.badge">Made for Bangkok Bank</span></div>
       <h1 data-i18n="hero.title">Pick the right <span class="accent" data-i18n="hero.titleAccent">AI Tool</span></h1>
       <p data-i18n="hero.sub">Answer a few questions about what you're trying to build, and we'll recommend the best Microsoft platform to build it on.</p>
       <div class="hero-cta">
@@ -1006,7 +1007,6 @@ const I18N = {
     'hero.badge':'อ้างอิงจาก Microsoft AI Decision Tree',
     'hero.title':'เลือก',
     'hero.titleAccent':'AI Tool',
-    'hero.title2':'ที่ใช่สำหรับ agent ของคุณ',
     'hero.sub':'ตอบคำถามไม่กี่ข้อเกี่ยวกับ use case, ผู้ใช้, ข้อมูล และการกำกับดูแล เครื่องมือจะแนะนำแพลตฟอร์ม Microsoft ที่เหมาะสม — ตั้งแต่ Microsoft 365 Copilot จนถึง Microsoft Foundry — ตาม Cloud Adoption Framework ของ Microsoft',
     'hero.cta':'เริ่มใช้งาน',
     'hero.ref':'แหล่งอ้างอิง',
