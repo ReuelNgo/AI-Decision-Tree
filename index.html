@@ -1630,7 +1630,7 @@ function exportPPT(){
     });
     
     // Score value
-    slide4.addText(String(scores[entry.key]), {
+    slide4.addText(`${scores[entry.key]}`, {
       x: 8.5, y: yPos, w: 0.8, h: 0.35,
       fontSize: 12, bold: true, color: colors.primary, align: 'right'
     });
