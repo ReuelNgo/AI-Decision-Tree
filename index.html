@@ -1474,6 +1474,12 @@ function exportPPT(){
     text: '1A1F2E'
   };
   
+  // Constants for slide content limits
+  const MAX_REASONS_PER_SLIDE = 5;
+  const MAX_WHEN_ITEMS_PER_SLIDE = 8;
+  const MAX_SUMMARY_ITEMS_PER_SLIDE = 10;
+  const MAX_LINKS_PER_SLIDE = 8;
+  
   // Slide 1: Title Slide
   let slide1 = prs.addSlide();
   slide1.background = { color: '1B4A91' };
@@ -1547,7 +1553,7 @@ function exportPPT(){
   });
   
   let yPos = 3.2;
-  reasons.slice(0, 5).forEach((reason) => {
+  reasons.slice(0, MAX_REASONS_PER_SLIDE).forEach((reason) => {
     slide2.addText('• ' + reason, {
       x: 0.7, y: yPos, w: 8.8, h: 0.45,
       fontSize: 12, color: colors.text
@@ -1570,7 +1576,7 @@ function exportPPT(){
   });
   
   yPos = 1.3;
-  when.slice(0, 8).forEach((item) => {
+  when.slice(0, MAX_WHEN_ITEMS_PER_SLIDE).forEach((item) => {
     slide3.addText('✓ ' + item, {
       x: 0.7, y: yPos, w: 8.8, h: 0.5,
       fontSize: 13, color: colors.text
@@ -1647,7 +1653,7 @@ function exportPPT(){
   });
   
   yPos = 1.4;
-  summary.slice(0, 10).forEach((item) => {
+  summary.slice(0, MAX_SUMMARY_ITEMS_PER_SLIDE).forEach((item) => {
     slide5.addText(item.q, {
       x: 0.7, y: yPos, w: 4.5, h: 0.4,
       fontSize: 11, color: colors.text, bold: true
@@ -1675,7 +1681,7 @@ function exportPPT(){
     });
     
     yPos = 1.4;
-    links.slice(0, 8).forEach(link => {
+    links.slice(0, MAX_LINKS_PER_SLIDE).forEach(link => {
       const label = state.lang === 'th' ? link.label_th : link.label_en;
       slide6.addText('→ ' + label, {
         x: 0.7, y: yPos, w: 8.8, h: 0.45,
