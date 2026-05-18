@@ -1464,23 +1464,6 @@ function exportPPT(){
   
   // Create presentation
   const prs = new PptxGenJS();
-  prs.defineLayout({ name: 'LAYOUT1', master: 'MASTER1' });
-  prs.defineLayout({ name: 'BLANK' });
-  
-  // Define master layout
-  prs.defineSlideMaster({
-    name: 'MASTER1',
-    background: { color: 'FFFFFF' },
-    objects: [
-      {
-        placeholder: {
-          options: { name: 'bg', type: 'bg', w: '100%', h: '100%' },
-          text: ''
-        },
-        fill: { color: 'F6F8FC' }
-      }
-    ]
-  });
   
   // Color scheme
   const colors = {
@@ -1564,7 +1547,7 @@ function exportPPT(){
   });
   
   let yPos = 3.2;
-  reasons.slice(0, 5).forEach((reason, idx) => {
+  reasons.slice(0, 5).forEach((reason) => {
     slide2.addText('• ' + reason, {
       x: 0.7, y: yPos, w: 8.8, h: 0.45,
       fontSize: 12, color: colors.text
@@ -1587,14 +1570,12 @@ function exportPPT(){
   });
   
   yPos = 1.3;
-  when.forEach((item, idx) => {
-    if(idx < 8) {
-      slide3.addText('✓ ' + item, {
-        x: 0.7, y: yPos, w: 8.8, h: 0.5,
-        fontSize: 13, color: colors.text
-      });
-      yPos += 0.55;
-    }
+  when.slice(0, 8).forEach((item) => {
+    slide3.addText('✓ ' + item, {
+      x: 0.7, y: yPos, w: 8.8, h: 0.5,
+      fontSize: 13, color: colors.text
+    });
+    yPos += 0.55;
   });
   
   // Slide 4: Platform Scores
@@ -1643,7 +1624,7 @@ function exportPPT(){
     });
     
     // Score value
-    slide4.addText(scores[entry.key], {
+    slide4.addText(scores[entry.key].toString(), {
       x: 8.5, y: yPos, w: 0.8, h: 0.35,
       fontSize: 12, bold: true, color: colors.primary, align: 'right'
     });
@@ -1666,18 +1647,16 @@ function exportPPT(){
   });
   
   yPos = 1.4;
-  summary.forEach((item, idx) => {
-    if(idx < 10) {
-      slide5.addText(item.q, {
-        x: 0.7, y: yPos, w: 4.5, h: 0.4,
-        fontSize: 11, color: colors.text, bold: true
-      });
-      slide5.addText(item.a, {
-        x: 5.3, y: yPos, w: 4.2, h: 0.4,
-        fontSize: 11, color: colors.primary
-      });
-      yPos += 0.45;
-    }
+  summary.slice(0, 10).forEach((item) => {
+    slide5.addText(item.q, {
+      x: 0.7, y: yPos, w: 4.5, h: 0.4,
+      fontSize: 11, color: colors.text, bold: true
+    });
+    slide5.addText(item.a, {
+      x: 5.3, y: yPos, w: 4.2, h: 0.4,
+      fontSize: 11, color: colors.primary
+    });
+    yPos += 0.45;
   });
   
   // Slide 6: Next Steps
