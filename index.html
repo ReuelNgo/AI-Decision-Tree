@@ -75,68 +75,97 @@
 
   /* ======== HERO ======== */
   .hero{
-    background:#ffffff;
-    color:var(--ink);padding:48px 0 56px;position:relative;overflow:hidden;
+    background:#1a2535;
+    color:white;position:relative;overflow:hidden;
     margin:12px 16px;border-radius:24px;
-    box-shadow:0 8px 32px rgba(6,37,85,.10), 0 2px 8px rgba(6,37,85,.06);
+    box-shadow:0 8px 40px rgba(0,0,0,.35);
+    min-height:calc(100vh - 106px);
+    display:flex;flex-direction:column;
   }
   .hero::before{
-    content:"";position:absolute;top:-80px;right:-60px;width:320px;height:320px;
-    background:radial-gradient(circle, rgba(27,74,145,.06) 0%, transparent 70%);
+    content:"";position:absolute;top:-120px;right:-120px;width:500px;height:500px;
+    background:radial-gradient(circle, rgba(27,74,145,.25) 0%, transparent 65%);
     border-radius:50%;pointer-events:none;
   }
   .hero::after{
-    content:"";position:absolute;bottom:-160px;left:-80px;width:400px;height:400px;
-    background:radial-gradient(circle, rgba(245,168,0,.07) 0%, transparent 70%);
+    content:"";position:absolute;bottom:-120px;left:-120px;width:500px;height:500px;
+    background:radial-gradient(circle, rgba(14,165,233,.15) 0%, transparent 65%);
     border-radius:50%;pointer-events:none;
   }
-  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center}
-  .badge{
-    display:inline-flex;align-items:center;gap:8px;background:var(--bbl-blue-light);
-    border:1px solid rgba(27,74,145,.2);color:var(--bbl-blue);padding:5px 12px;
-    border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.5px;
-    text-transform:uppercase;margin-bottom:14px;
+  .hero-inner{
+    position:relative;z-index:1;
+    flex:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    width:100%;padding:60px 0;
+    text-align:center;
   }
-  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--bbl-blue);box-shadow:0 0 0 4px rgba(27,74,145,.15)}
-  .hero h1{font-size:36px;font-weight:800;line-height:1.15;margin:0 0 14px;letter-spacing:-.5px;color:var(--bbl-blue-deep)}
-  .hero h1 .accent{
-    background:linear-gradient(135deg, var(--bbl-blue) 0%, var(--bbl-gold) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
+  .hero-inner > div:first-child{
+    display:flex;flex-direction:column;align-items:center;width:100%;
   }
-  .hero p{font-size:16px;color:var(--ink-soft);margin:0 0 22px;max-width:560px;font-weight:400}
-  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-icon{
+    width:72px;height:72px;border-radius:18px;
+    background:linear-gradient(135deg,#1e3a6e 0%,#1a4d8f 100%);
+    border:1px solid rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 28px;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+  }
+  .hero h1{font-size:52px;font-weight:800;line-height:1.1;margin:0 0 16px;letter-spacing:-.8px;color:#ffffff}
+  .hero p{font-size:17px;color:rgba(255,255,255,.65);margin:0 auto 40px;max-width:560px;font-weight:400;line-height:1.65;text-align:center}
+  .hero-cta{display:flex;gap:32px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+  .hero-cta .btn{min-width:200px;justify-content:center}
   .btn{
-    display:inline-flex;align-items:center;gap:10px;padding:14px 28px;
+    display:inline-flex;align-items:center;gap:10px;padding:15px 36px;
     border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;
     border:none;transition:all .2s ease;text-decoration:none;
   }
-  .btn-primary{background:var(--bbl-blue);color:#fff;box-shadow:0 6px 20px rgba(27,74,145,.3)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(27,74,145,.4);text-decoration:none}
-  .btn-ghost{background:transparent;color:var(--bbl-blue);border:1.5px solid var(--bbl-blue)}
-  .btn-ghost:hover{background:var(--bbl-blue-light);text-decoration:none}
+  .btn-primary{
+    background:linear-gradient(135deg,#0ea5e9 0%,#0078d4 100%);
+    color:#fff;box-shadow:0 6px 24px rgba(14,165,233,.4);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(14,165,233,.55);text-decoration:none}
+  .btn-ghost{background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.2)}
+  .btn-ghost:hover{background:rgba(255,255,255,.18);text-decoration:none}
+  .btn-outline-hero{
+    background:#ffffff;color:#0078d4;
+    border:1.5px solid rgba(255,255,255,.4);
+    box-shadow:0 4px 16px rgba(0,0,0,.12);
+  }
+  .btn-outline-hero:hover{background:#f0f9ff;color:#005a9e;transform:translateY(-2px);text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.18)}
   .btn svg{width:18px;height:18px}
 
   .platforms-preview{
-    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    overflow:hidden;
+    width:100%;
+    max-width:828px;
+    margin:0 auto;
+    -webkit-mask-image:linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%);
+    mask-image:linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%);
   }
+  .carousel-track{
+    display:flex;gap:0;width:max-content;
+  }
+  .carousel-track:hover{}
   .platform-pill{
-    background:var(--bbl-blue-light);border:1px solid rgba(27,74,145,.12);
-    border-radius:var(--radius);
-    padding:12px;display:flex;align-items:center;gap:10px;
-    transition:all .25s ease;
+    background:#1e3252;border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    width:260px;margin-right:16px;
+    padding:36px 20px 28px;flex-shrink:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:16px;
+    transition:filter .3s ease, transform .25s ease, border-color .25s ease;text-align:center;
   }
-  .platform-pill:hover{background:#dce6f5;transform:translateY(-2px)}
-  .platform-pill .pico{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:white;display:flex;align-items:center;justify-content:center;padding:6px;box-shadow:0 1px 4px rgba(27,74,145,.1)}
+  .platform-pill:hover{background:#24406a;transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+  .platform-pill .pico{width:64px;height:64px;flex-shrink:0;border-radius:14px;background:transparent;display:flex;align-items:center;justify-content:center;padding:0}
   .platform-pill .pico img{width:100%;height:100%;object-fit:contain}
   .brand-mark img{width:100%;height:100%;object-fit:contain}
-  .platform-pill .ptext{font-size:13px;color:var(--ink)}
-  .platform-pill .ptext b{display:block;font-weight:700;font-size:14px;margin-bottom:2px}
-  .platform-pill .ptext span{opacity:.75;font-size:11.5px}
+  .platform-pill .ptext{font-size:13px;color:white}
+  .platform-pill .ptext b{display:block;font-weight:700;font-size:15px;color:white}
+  .platform-pill .ptext span{display:none}
 
   /* ======== MAIN CONTENT ======== */
   main{padding:100px 0 80px;display:none}
   .section-title{font-size:13px;font-weight:700;color:var(--bbl-blue);letter-spacing:1.5px;text-transform:uppercase;margin:10px 0 8px}
-  .section-heading{font-size:28px;font-weight:800;color:var(--ink);margin:0 0 12px;letter-spacing:-.3px}
+  .section-heading{font-size:28px;font-weight:800;color:var(--ink);margin:12px 0 12px;letter-spacing:-.3px}
   .section-sub{color:var(--ink-soft);font-size:15px;margin:0 0 32px}
 
   /* ======== STEPPER ======== */
@@ -179,11 +208,11 @@
   .options{display:grid;grid-template-columns:repeat(2, 1fr);gap:14px}
   .option{
     background:white;border:2px solid var(--line);border-radius:var(--radius);
-    padding:18px 20px;cursor:pointer;transition:all .2s ease;
+    padding:18px 20px;cursor:pointer;
     display:flex;gap:14px;align-items:flex-start;text-align:left;
     position:relative;
   }
-  .option:hover{border-color:var(--bbl-blue);background:#FBFCFE;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .option:hover{border-color:var(--bbl-blue);background:#FBFCFE;box-shadow:var(--shadow-sm)}
   .option.selected{border-color:var(--bbl-blue);background:var(--bbl-blue-light);box-shadow:0 0 0 3px rgba(27,74,145,.1)}
   .option.selected::after{
     content:"✓";position:absolute;top:12px;right:14px;
@@ -307,7 +336,7 @@
   .footer{
     background:#ffffff;color:var(--ink);
     padding:40px 0 30px;font-size:13px;
-    margin:0 16px 16px;border-radius:24px;
+    margin:16px 16px 16px;border-radius:24px;
     box-shadow:0 8px 32px rgba(6,37,85,.10), 0 2px 8px rgba(6,37,85,.06);
     overflow:hidden;
   }
@@ -321,10 +350,11 @@
 
   /* ======== RESPONSIVE ======== */
   @media (max-width:900px){
-    .hero-inner{grid-template-columns:1fr}
+    .hero{min-height:unset}
+    .hero-inner{padding:40px 0}
     .platforms-preview{grid-template-columns:1fr 1fr}
     .result-grid{grid-template-columns:1fr}
-    .hero h1{font-size:34px}
+    .hero h1{font-size:36px}
     .options{grid-template-columns:1fr}
     .quiz-body{padding:30px 24px}
     .quiz-footer{padding:18px 24px}
@@ -336,7 +366,7 @@
     .card{padding:22px}
   }
   @media (max-width:560px){
-    .hero{padding:40px 0 56px}
+    .hero{min-height:unset}
     .hero h1{font-size:28px}
     .platforms-preview{grid-template-columns:1fr}
     .header{padding:14px 0}
@@ -354,6 +384,83 @@
   /* Animations */
   @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
   .fade-in{animation:fadeUp .4s ease}
+
+  /* ======== HAMBURGER ======== */
+  .hamburger{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+    border-radius:8px;padding:8px 10px;cursor:pointer;display:flex;flex-direction:column;
+    gap:5px;transition:background .2s;flex-shrink:0;
+  }
+  .hamburger:hover{background:rgba(255,255,255,.22)}
+  .hamburger span{display:block;width:20px;height:2px;background:white;border-radius:2px;transition:all .25s ease}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* ======== DROPDOWN MENU ======== */
+  .drawer-overlay{
+    position:fixed;inset:0;
+    z-index:200;background:transparent;
+    opacity:0;pointer-events:none;
+  }
+  .drawer-overlay.open{opacity:1;pointer-events:all}
+  .drawer{
+    position:fixed;top:78px;right:20px;
+    width:215px;
+    background:#1e2a3a;
+    z-index:201;
+    border-radius:10px;
+    box-shadow:0 8px 32px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.2);
+    transform:scale(0.95) translateY(-8px);
+    transform-origin:top right;
+    opacity:0;pointer-events:none;
+    transition:transform .2s cubic-bezier(.4,0,.2,1), opacity .15s ease;
+    overflow:hidden;
+  }
+  .drawer.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+  .drawer-nav{list-style:none;margin:0;padding:6px 0}
+  .drawer-nav li a{
+    display:flex;align-items:center;gap:12px;padding:12px 16px;
+    font-size:13.5px;font-weight:500;color:rgba(255,255,255,.88);
+    text-decoration:none;transition:background .15s;cursor:pointer;white-space:nowrap;
+  }
+  .drawer-nav li a:hover{background:rgba(255,255,255,.1);color:white;text-decoration:none}
+  .drawer-nav .nav-icon{width:16px;height:16px;flex-shrink:0;opacity:.75}
+  .drawer-divider{height:1px;background:rgba(255,255,255,.12);margin:4px 16px}
+
+  /* ======== MODALS ======== */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(6,37,85,.4);backdrop-filter:blur(3px);
+    z-index:300;display:flex;align-items:center;justify-content:center;padding:24px;
+    opacity:0;pointer-events:none;transition:opacity .2s ease;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{
+    background:#fff;border-radius:20px;max-width:680px;width:100%;
+    box-shadow:0 24px 60px rgba(6,37,85,.2);max-height:85vh;overflow-y:auto;
+    transform:translateY(16px);transition:transform .25s ease;
+  }
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal-head{
+    padding:28px 32px 20px;border-bottom:1px solid var(--line);
+    display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+    position:sticky;top:0;background:#fff;border-radius:20px 20px 0 0;z-index:1;
+  }
+  .modal-head h2{margin:0;font-size:20px;font-weight:800;color:var(--bbl-blue-deep)}
+  .modal-close{
+    background:var(--bbl-blue-light);border:none;cursor:pointer;border-radius:8px;
+    padding:6px 9px;font-size:18px;line-height:1;color:var(--bbl-blue);transition:background .2s;flex-shrink:0;
+  }
+  .modal-close:hover{background:#c8d8f0}
+  .modal-body{padding:24px 32px 32px;font-size:14px;line-height:1.7;color:var(--ink-soft)}
+  .modal-body h3{color:var(--bbl-blue-deep);font-size:15px;font-weight:700;margin:20px 0 6px}
+  .modal-body p{margin:0 0 12px}
+  .modal-body ul{margin:0 0 12px;padding-left:20px}
+  .modal-body ul li{margin-bottom:6px}
+  .score-table{width:100%;border-collapse:collapse;margin:12px 0}
+  .score-table th{background:var(--bbl-blue-light);color:var(--bbl-blue-deep);padding:8px 12px;text-align:left;font-size:13px}
+  .score-table td{padding:8px 12px;border-bottom:1px solid var(--line);font-size:13px}
+  .score-table tr:last-child td{border-bottom:none}
 </style>
 </head>
 <body>
@@ -370,47 +477,141 @@
         <div class="brand-sub" data-i18n="header.sub">AI Agent Platform Advisor</div>
       </div>
     </div>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button class="lang-btn active" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="th">TH</button>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="th">TH</button>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- ============ DROPDOWN MENU ============ -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="drawer" id="drawer" aria-label="Site navigation">
+  <ul class="drawer-nav">
+    <li>
+      <a id="navAbout">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+        About this tool
+      </a>
+    </li>
+    <li>
+      <a id="navScoring">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+        Scoring Methodology
+      </a>
+    </li>
+    <li><div class="drawer-divider"></div></li>
+    <li>
+      <a href="#report-issue" id="navReport">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+        Report an issue
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ============ MODAL: ABOUT ============ -->
+<div class="modal-overlay" id="modalAbout">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+    <div class="modal-head">
+      <h2 id="aboutTitle">About this tool</h2>
+      <button class="modal-close" data-close="modalAbout" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The <strong>AI Agent Platform Advisor</strong> is an internal decision-support tool built by Bangkok Bank to help teams identify the most suitable Microsoft AI platform for their agent use case.</p>
+      <h3>What it does</h3>
+      <p>It guides you through a short, structured questionnaire covering your goal, target users, data sources, deployment channels, customisation needs, and governance requirements. Based on your answers it recommends one of four Microsoft platforms:</p>
+      <ul>
+        <li><strong>Microsoft 365 Copilot</strong> — AI assistance inside the apps your team already uses</li>
+        <li><strong>Agent Builder</strong> — Declarative, no-code agents that extend M365 Copilot</li>
+        <li><strong>Copilot Studio</strong> — Low-code conversational agents and process automation</li>
+        <li><strong>Microsoft Foundry</strong> — Pro-code, fully custom AI development</li>
+      </ul>
+      <h3>Data & privacy</h3>
+      <p>This tool runs entirely in your browser. No answers or results are transmitted to any server.</p>
+      <h3>Based on</h3>
+      <p>Microsoft's official <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai/strategy" target="_blank" rel="noopener">Cloud Adoption Framework · AI Strategy</a> decision tree.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: SCORING ============ -->
+<div class="modal-overlay" id="modalScoring">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="scoringTitle">
+    <div class="modal-head">
+      <h2 id="scoringTitle">Scoring Methodology</h2>
+      <button class="modal-close" data-close="modalScoring" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Each question in the advisor maps to one or more platform dimensions. Your answer awards weighted points to each of the four platforms. The platform with the highest total score at the end is recommended as your primary choice.</p>
+      <h3>Dimensions scored</h3>
+      <table class="score-table">
+        <thead><tr><th>Dimension</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Goal alignment</td><td>How well the platform fits the stated business objective</td></tr>
+          <tr><td>User profile</td><td>Whether the intended users are knowledge workers, makers, or developers</td></tr>
+          <tr><td>Data sources</td><td>Compatibility with where your data lives (M365 Graph, enterprise systems, custom APIs)</td></tr>
+          <tr><td>Channels</td><td>Support for the deployment channels required (Teams, web, mobile, custom)</td></tr>
+          <tr><td>Customisation depth</td><td>Degree of logic, branding, or integration complexity needed</td></tr>
+          <tr><td>Governance</td><td>Compliance, audit, and IT control requirements</td></tr>
+        </tbody>
+      </table>
+      <h3>Confidence rating</h3>
+      <p>A confidence percentage is shown alongside the recommendation. This reflects the margin between the top-scoring platform and the next closest. A tight margin surfaces an "Also consider" suggestion.</p>
+      <h3>Limitations</h3>
+      <p>The advisor is a starting point, not a final decision. Edge cases, existing licensing agreements, and organisational constraints may shift the recommendation. Always validate with your IT and governance teams.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ REPORT AN ISSUE (placeholder) ============ -->
+<section id="report-issue" style="display:none">
+  <!-- Placeholder: wire up to your issue tracking or feedback form -->
+</section>
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="container hero-inner">
     <div>
-      <div class="badge"><span class="badge-dot"></span><span data-i18n="hero.badge">Powered by Microsoft AI Decision Tree</span></div>
-      <h1 data-i18n="hero.title">Pick the right Platform for your Next Agent</h1>
+      <div class="hero-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="white" opacity=".9"/><circle cx="18" cy="5" r="1.5" fill="white" opacity=".6"/><circle cx="6" cy="18" r="1" fill="white" opacity=".4"/></svg>
+      </div>
+      <h1 data-i18n="hero.title">Agent Platform Advisor</h1>
       <p data-i18n="hero.sub">Answer a few questions about what you're trying to build, and we'll recommend the best Microsoft platform to build it on.</p>
+      <div class="platforms-preview" aria-hidden="true">
+        <div class="carousel-track">
+          <div class="platform-pill">
+            <div class="pico" id="ic-m365"></div>
+            <div class="ptext"><b>Microsoft 365 Copilot</b></div>
+          </div>
+          <div class="platform-pill">
+            <div class="pico" id="ic-ab"></div>
+            <div class="ptext"><b>Agent Builder</b></div>
+          </div>
+          <div class="platform-pill">
+            <div class="pico" id="ic-cs"></div>
+            <div class="ptext"><b>Copilot Studio</b></div>
+          </div>
+          <div class="platform-pill">
+            <div class="pico" id="ic-fdry"></div>
+            <div class="ptext"><b>Microsoft Foundry</b></div>
+          </div>
+        </div>
+      </div>
       <div class="hero-cta">
         <button class="btn btn-primary" id="startBtn">
-          <span data-i18n="hero.cta">Start the Advisor</span>
+          <span data-i18n="hero.cta">Get Started</span>
           <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <a class="btn btn-ghost" href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai/strategy" target="_blank" rel="noopener">
+        <a class="btn btn-outline-hero" href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai/strategy" target="_blank" rel="noopener">
           <span data-i18n="hero.ref">Reference</span>
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 3h7v7M10 14L21 3M21 14v7H3V3h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-      </div>
-    </div>
-    <div class="platforms-preview" aria-hidden="true">
-      <div class="platform-pill">
-        <div class="pico" id="ic-m365"></div>
-        <div class="ptext"><b>Microsoft 365 Copilot</b><span data-i18n="prev.m365">AI assistant for everyday work</span></div>
-      </div>
-      <div class="platform-pill">
-        <div class="pico" id="ic-ab"></div>
-        <div class="ptext"><b>Agent Builder</b><span data-i18n="prev.ab">Lightweight, declarative agent creation inside M365</span></div>
-      </div>
-      <div class="platform-pill">
-        <div class="pico" id="ic-cs"></div>
-        <div class="ptext"><b>Copilot Studio</b><span data-i18n="prev.cs">Low-code agent platform</span></div>
-      </div>
-      <div class="platform-pill">
-        <div class="pico" id="ic-fdry"></div>
-        <div class="ptext"><b>Microsoft Foundry</b><span data-i18n="prev.fdry">Pro-code AI development</span></div>
       </div>
     </div>
   </div>
@@ -421,7 +622,6 @@
 
   <!-- QUIZ -->
   <div id="quizWrap">
-    <div class="section-title" data-i18n="quiz.section">Step by Step</div>
     <h2 class="section-heading" data-i18n="quiz.heading">Tell us about your agent use case</h2>
 
     <!-- Stepper -->
@@ -469,10 +669,9 @@
       </div>
       <div style="min-width:200px">
         <div style="font-weight:700;color:var(--bbl-blue-deep);margin-bottom:10px" data-i18n="footer.links">Useful links</div>
-        <p><a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai/strategy" target="_blank" rel="noopener">CAF · AI Strategy</a></p>
-        <p><a href="https://adoption.microsoft.com/copilot/" target="_blank" rel="noopener">Microsoft 365 Copilot</a></p>
-        <p><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/" target="_blank" rel="noopener">Copilot Studio</a></p>
-        <p><a href="https://learn.microsoft.com/en-us/azure/ai-foundry/" target="_blank" rel="noopener">Microsoft Foundry</a></p>
+        <p><a href="https://adoption.microsoft.com/copilot/" target="_blank" rel="noopener">Microsoft 365 Copilot · Microsoft Documentation</a></p>
+        <p><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/" target="_blank" rel="noopener">Copilot Studio · Microsoft Documentation</a></p>
+        <p><a href="https://microsoft.github.io/mcscatblog/" target="_blank" rel="noopener">Copilot Studio · Technical Patterns & Best Practices</a></p>
       </div>
     </div>
   </div>
@@ -487,7 +686,7 @@ const ICONS = {
   m365: `<img src="images/m365-copilot-logo.png" alt="Microsoft 365 Copilot" width="36" height="36">`,
 
   /* Agent Builder — Declarative agents for M365 Copilot */
-  ab: `<img src="images/copilot.png" alt="Agent Builder" width="36" height="36">`,
+  ab: `<img src="images/Agent Builder.png" alt="Agent Builder" width="36" height="36">`,
 
   /* Copilot Studio — Low-code agent development platform */
   cs: `<img src="images/copilot-studio.png" alt="Copilot Studio" width="36" height="36">`,
@@ -501,6 +700,41 @@ document.getElementById('ic-m365').innerHTML = ICONS.m365;
 document.getElementById('ic-ab').innerHTML = ICONS.ab;
 document.getElementById('ic-cs').innerHTML = ICONS.cs;
 document.getElementById('ic-fdry').innerHTML = ICONS.fdry;
+
+// Carousel: infinite scroll driven by rAF — no CSS animation jump
+(function initCarousel(){
+  const container = document.querySelector('.platforms-preview');
+  const track     = document.querySelector('.carousel-track');
+  if(!track || !container) return;
+
+  const PILL_SLOT = 260 + 16;
+  const SET_SIZE  = 4;
+  const SET_WIDTH = SET_SIZE * PILL_SLOT;
+  const SPEED     = 0.55;
+
+  // Build 3 full sets
+  const origPills = [...track.querySelectorAll('.platform-pill')];
+  for(let i = 0; i < 2; i++){
+    origPills.forEach(pill => {
+      const c = pill.cloneNode(true);
+      c.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+      track.appendChild(c);
+    });
+  }
+
+  // Apply initial position before first paint so pills never render at x=0
+  let pos = -SET_WIDTH;
+  track.style.willChange = 'transform';
+  track.style.transform  = `translateX(${pos}px)`;
+
+  function tick(){
+    pos += SPEED;
+    if(pos >= 0) pos -= SET_WIDTH;
+    track.style.transform = `translateX(${pos}px)`;
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
 
 /* =====================================================================
    PLATFORM METADATA
@@ -911,7 +1145,6 @@ const I18N = {
     'prev.ab':'Lightweight, declarative Agents',
     'prev.cs':'Full low-code orchestration/platform',
     'prev.fdry':'Pro-code engineering platform',
-    'quiz.section':'Step by Step',
     'quiz.heading':'Tell us about your agent use case',
     'quiz.question':'Question',
     'quiz.of':'of',
@@ -1710,6 +1943,49 @@ document.querySelectorAll('.lang-btn').forEach(btn=>{
 applyI18n();
 renderQuestion();
 updateNav();
+
+/* =====================================================================
+   HAMBURGER / DRAWER / MODALS
+===================================================================== */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const drawer       = document.getElementById('drawer');
+const drawerOverlay= document.getElementById('drawerOverlay');
+
+function openDrawer(){
+  drawer.classList.add('open');
+  drawerOverlay.classList.add('open');
+  hamburgerBtn.classList.add('open');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  drawerOverlay.classList.remove('open');
+  hamburgerBtn.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+}
+
+hamburgerBtn.addEventListener('click', ()=> drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+drawerOverlay.addEventListener('click', closeDrawer);
+
+function openModal(id){
+  closeDrawer();
+  document.getElementById(id).classList.add('open');
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+}
+
+document.getElementById('navAbout').addEventListener('click',   ()=> openModal('modalAbout'));
+document.getElementById('navScoring').addEventListener('click', ()=> openModal('modalScoring'));
+document.getElementById('navReport').addEventListener('click',  closeDrawer);
+
+document.querySelectorAll('.modal-close').forEach(btn=>{
+  btn.addEventListener('click', ()=> closeModal(btn.dataset.close));
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click', e=>{ if(e.target === overlay) closeModal(overlay.id); });
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeDrawer(); document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open')); } });
 </script>
 
 </body>
