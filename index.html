@@ -95,12 +95,13 @@
   .hero-inner{
     position:relative;z-index:1;
     flex:1;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    display:flex;flex-direction:column;align-items:center;
     width:100%;padding:60px 0;
     text-align:center;
   }
   .hero-inner > div:first-child{
     display:flex;flex-direction:column;align-items:center;width:100%;
+    margin:auto 0;
   }
   .hero-icon{
     width:72px;height:72px;border-radius:18px;
@@ -579,7 +580,7 @@
   <div class="container hero-inner">
     <div>
       <div class="hero-icon">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="white" opacity=".9"/><circle cx="18" cy="5" r="1.5" fill="white" opacity=".6"/><circle cx="6" cy="18" r="1" fill="white" opacity=".4"/></svg>
+        <img src="images/ai-technology.png" alt="AI Technology" width="40" height="40">
       </div>
       <h1 data-i18n="hero.title">Agent Platform Advisor</h1>
       <p data-i18n="hero.sub">Answer a few questions about what you're trying to build, and we'll recommend the best Microsoft platform to build it on.</p>
@@ -1892,7 +1893,7 @@ function restart(){
   state.answers = new Array(QUESTIONS.length).fill(null);
   showQuiz();
   document.querySelector('main').style.display = 'none';
-  document.getElementById('hero').style.display = 'block';
+  document.getElementById('hero').style.display = '';
   window.scrollTo({top: 0, behavior:'smooth'});
 }
 
@@ -1921,7 +1922,7 @@ document.getElementById('startBtn').addEventListener('click', ()=>{
 
 document.querySelector('.brand-text').addEventListener('click', ()=>{
   document.querySelector('main').style.display = 'none';
-  document.getElementById('hero').style.display = 'block';
+  document.getElementById('hero').style.display = '';
   window.scrollTo({top: 0, behavior: 'smooth'});
 });
 
