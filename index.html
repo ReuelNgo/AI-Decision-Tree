@@ -1292,7 +1292,9 @@ function renderQuestion(){
     btn.addEventListener('click', ()=>{
       const key = btn.getAttribute('data-key');
       state.answers[state.index] = key;
-      renderQuestion();
+      body.querySelectorAll('.option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById('progress').style.width = (((state.index + 1) / QUESTIONS.length) * 100) + '%';
       updateNav();
     });
   });
